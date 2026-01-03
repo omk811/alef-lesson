@@ -1,292 +1,747 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>درس تفاعلي: الألف في آخر الأسماء والأفعال</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700&display=swap" rel="stylesheet">
+    <title>درس تفاعلي: الألف في آخر الأفعال</title>
     <style>
-        body {
-            font-family: 'Baloo Bhaijaan 2', sans-serif;
-            direction: rtl;
-            background-color: #f9f9f9;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
             color: #333;
             line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+        
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2a9d8f 100%);
             color: white;
-            padding: 1rem;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        nav {
-            background-color: #34495e;
-            padding: 0.5rem;
-            text-align: center;
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
         }
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .lesson-info {
+            background-color: #e9f7fe;
+            border-right: 5px solid #2a9d8f;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .lesson-info h2 {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .lesson-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .side-content {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #2a9d8f;
+        }
+        
+        .section h3 {
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h3 i {
+            margin-left: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .rule-box {
+            background-color: #f0f9f7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-right: 4px solid #2a9d8f;
+        }
+        
+        .rule-title {
+            font-weight: bold;
+            color: #1a5f7a;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .examples {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .example-item:last-child {
+            border-bottom: none;
+        }
+        
+        .correct {
+            color: #2a9d8f;
             font-weight: bold;
         }
-        nav a:hover {
-            text-decoration: underline;
+        
+        .incorrect {
+            color: #e63946;
+            font-weight: bold;
         }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
+        
+        .interactive-section {
+            background-color: #e8f4fc;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .exercise {
             background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #1a5f7a;
+        }
+        
+        .exercise h4 {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: #f0f0f0;
+            padding: 12px 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+        
+        .option:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-3px);
         }
+        
+        .option.selected {
+            background-color: #2a9d8f;
+            color: white;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .feedback.correct-feedback {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .feedback.incorrect-feedback {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        button {
+            background-color: #1a5f7a;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #2a9d8f;
+        }
+        
+        .summary-box {
+            background-color: #f0f9f7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .summary-box h4 {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .summary-list {
+            list-style-type: none;
+        }
+        
+        .summary-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        
+        .summary-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-list li::before {
+            content: "✓";
+            color: #2a9d8f;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* أحرف عربية مميزة */
+        .arabic-letter {
+            font-size: 1.5rem;
+            color: #1a5f7a;
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f0f9f7;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        
+        /* تنسيق الجدول */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0;
+            margin: 20px 0;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            text-align: center;
-        }
+        
         th {
-            background-color: #f2f2f2;
-        }
-        button {
-            background-color: #3498db;
+            background-color: #2a9d8f;
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            margin: 0.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Baloo Bhaijaan 2', sans-serif;
+            padding: 12px;
+            text-align: right;
         }
-        button:hover {
-            background-color: #2980b9;
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
         }
-        .example-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        .exercise {
-            background-color: #e8f4fc;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 2rem;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
+        
+        tr:nth-child(even) {
             background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            right: 0;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #ddd;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>درس تفاعلي: الألف في آخر الأسماء والأفعال</h1>
-        <p>إعداد: الأستاذ خليل البلوشي</p>
+        <h1><i class="fas fa-book-open"></i> درس تفاعلي: الألف في آخر الأفعال</h1>
+        <p class="subtitle">وحدة: رياضتي وصحتي - للصف الخامس - الفصل الدراسي الثاني</p>
     </header>
-    <nav>
-        <a href="https://www.learnarabiconline.com/">تعلم العربية أونلاين</a>
-        <a href="https://www.alefbata.com/lessons">دروس الحروف</a>
-        <div class="dropdown">
-            <a href="#">موارد إضافية</a>
-            <div class="dropdown-content">
-                <a href="https://www.madinaharabic.com/">موقع المدينة</a>
-                <a href="https://www.languageguide.org/arabic/">دليل اللغة العربية</a>
-                <a href="https://www.lingohut.com/en/l69/learn-arabic">لينغوهات</a>
+    
+    <div class="lesson-info">
+        <h2>مقدمة عن الدرس</h2>
+        <p>في هذا الدرس سنتعلم قواعد كتابة الألف في آخر الأفعال، وسنتعرف على الفرق بين الألف الممدودة (ا) والألف المقصورة (ى).</p>
+        <p>هذا الدرس جزء من المحور الخامس "رياضتي وصحتي" في كتاب مهاراتي في الكتابة للصف الخامس.</p>
+    </div>
+    
+    <div class="content-container">
+        <div class="main-content">
+            <div class="section">
+                <h3><i class="fas fa-pen-nib"></i> القاعدة الأولى: الألف في الأفعال الثلاثية</h3>
+                
+                <div class="rule-box">
+                    <div class="rule-title">من الصفحة 46 من الكتاب:</div>
+                    <p>تكتب الألف في آخر الأفعال الثلاثية الماضية:</p>
+                    <ul style="padding-right: 20px; margin-top: 10px;">
+                        <li><strong>ممدودة (ا)</strong> إذا كان أصلها واوًا في المضارع</li>
+                        <li><strong>مقصورة (ى)</strong> إذا كان أصلها ياءً في المضارع</li>
+                    </ul>
+                    
+                    <div class="examples">
+                        <p><strong>أمثلة من الكتاب (صفحة 45-46):</strong></p>
+                        <div class="example-item">
+                            <span class="correct">طوى ← يطوي</span> (أصلها ياء) ← تكتب مقصورة (ى)
+                        </div>
+                        <div class="example-item">
+                            <span class="correct">دنا ← يدنو</span> (أصلها واو) ← تكتب ممدودة (ا)
+                        </div>
+                        <div class="example-item">
+                            <span class="correct">قضى ← يقضي</span> (أصلها ياء) ← تكتب مقصورة (ى)
+                        </div>
+                    </div>
+                    
+                    <p><strong>كيف تعرف الأصل؟</strong> ترجع إلى الفعل المضارع:</p>
+                    <table>
+                        <tr>
+                            <th>الفعل الماضي</th>
+                            <th>الفعل المضارع</th>
+                            <th>أصل الألف</th>
+                            <th>نوع الألف</th>
+                        </tr>
+                        <tr>
+                            <td>دعا</td>
+                            <td>يدعو</td>
+                            <td>واو</td>
+                            <td>ممدودة (ا)</td>
+                        </tr>
+                        <tr>
+                            <td>هدى</td>
+                            <td>يهدي</td>
+                            <td>ياء</td>
+                            <td>مقصورة (ى)</td>
+                        </tr>
+                        <tr>
+                            <td>رمى</td>
+                            <td>يرمي</td>
+                            <td>ياء</td>
+                            <td>مقصورة (ى)</td>
+                        </tr>
+                        <tr>
+                            <td>سما</td>
+                            <td>يسمو</td>
+                            <td>واو</td>
+                            <td>ممدودة (ا)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3><i class="fas fa-edit"></i> القاعدة الثانية: الألف في الأفعال غير الثلاثية</h3>
+                
+                <div class="rule-box">
+                    <div class="rule-title">من الصفحة 47 من الكتاب:</div>
+                    <p>تكتب الألف في آخر الأفعال غير الثلاثية:</p>
+                    <ul style="padding-right: 20px; margin-top: 10px;">
+                        <li><strong>مقصورة (ى)</strong> في معظم الحالات</li>
+                        <li><strong>ممدودة (ا)</strong> إذا سُبقت بياء</li>
+                    </ul>
+                    
+                    <div class="examples">
+                        <p><strong>أمثلة من الكتاب (صفحة 47):</strong></p>
+                        <div class="example-item">
+                            <span class="correct">انقى ← فعل غير ثلاثي ← ألف مقصورة</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="correct">غطى ← فعل غير ثلاثي ← ألف مقصورة</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="correct">تفضى ← فعل غير ثلاثي ← ألف مقصورة</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="correct">استحيا ← فعل غير ثلاثي سبق بياء ← ألف ممدودة</span>
+                        </div>
+                    </div>
+                    
+                    <p><strong>ملاحظة هامة:</strong> إذا جاءت الألف في الفعل غير الثلاثي بعد ياء، تكتب ممدودة.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3><i class="fas fa-list-check"></i> ملخص القواعد من الكتاب</h3>
+                
+                <div class="rule-box">
+                    <div class="rule-title">الخلاصة (صفحة 47 من الكتاب):</div>
+                    
+                    <div class="examples">
+                        <div class="example-item">
+                            <strong>1. الأفعال الثلاثية:</strong><br>
+                            - تكتب الألف ممدودة إذا كان أصلها واوًا، مثل: دعا، عصا<br>
+                            - تكتب الألف مقصورة إذا كان أصلها ياءً، مثل: هدى، رمى
+                        </div>
+                        <div class="example-item">
+                            <strong>2. الأفعال غير الثلاثية:</strong><br>
+                            - تكتب الألف مقصورة، مثل: انقى، غطى<br>
+                            - إذا سُبقت بياء تكتب ممدودة، مثل: استحيا
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interactive-section">
+                <h3><i class="fas fa-gamepad"></i> تمارين تفاعلية</h3>
+                
+                <div class="exercise">
+                    <h4>التمرين الأول: اختر الكتابة الصحيحة للألف</h4>
+                    <p>اختر الشكل الصحيح للألف في الفعل التالي:</p>
+                    <p style="font-size: 1.3rem; margin: 15px 0;">الفعل: دع<span id="question-1">?</span> (الفعل المضارع: يدعو)</p>
+                    
+                    <div class="options" id="options-1">
+                        <div class="option" data-correct="true" data-target="1">ا (ممدودة)</div>
+                        <div class="option" data-correct="false" data-target="1">ى (مقصورة)</div>
+                    </div>
+                    
+                    <button onclick="checkAnswer(1)">تحقق من الإجابة</button>
+                    
+                    <div class="feedback" id="feedback-1">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>التمرين الثاني: صحح الخطأ الإملائي</h4>
+                    <p>ما الخطأ في الجملة التالية من الكتاب؟</p>
+                    <p style="font-size: 1.3rem; margin: 15px 0;">"شدى الطيرٌ على غصن الشجرة."</p>
+                    <p><small>ملاحظة: الفعل المضارع من "شدى" هو "يشدي"</small></p>
+                    
+                    <div class="options" id="options-2">
+                        <div class="option" data-correct="true" data-target="2">كلمة "شدى" مكتوبة بشكل صحيح</div>
+                        <div class="option" data-correct="false" data-target="2">كلمة "شدى" يجب أن تكتب "شدا"</div>
+                        <div class="option" data-correct="false" data-target="2">كلمة "الطيرٌ" يجب أن تكتب "الطير"</div>
+                    </div>
+                    
+                    <button onclick="checkAnswer(2)">تحقق من الإجابة</button>
+                    
+                    <div class="feedback" id="feedback-2">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>التمرين الثالث: اختر الإجابة الصحيحة</h4>
+                    <p>لماذا تكتب الألف في كلمة "استحيا" ممدودة؟</p>
+                    
+                    <div class="options" id="options-3">
+                        <div class="option" data-correct="false" data-target="3">لأن أصلها واو في المضارع</div>
+                        <div class="option" data-correct="true" data-target="3">لأنها فعل غير ثلاثي سُبقت بياء</div>
+                        <div class="option" data-correct="false" data-target="3">لأنها فعل ثلاثي</div>
+                    </div>
+                    
+                    <button onclick="checkAnswer(3)">تحقق من الإجابة</button>
+                    
+                    <div class="feedback" id="feedback-3">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>التمرين الرابع: صنّف الأفعال التالية</h4>
+                    <p>صنّف الأفعال التالية إلى ثلاثية أو غير ثلاثية:</p>
+                    
+                    <div class="options" id="options-4">
+                        <div class="option" data-correct="true" data-target="4">انقى ← فعل غير ثلاثي</div>
+                        <div class="option" data-correct="true" data-target="4">هدى ← فعل ثلاثي</div>
+                        <div class="option" data-correct="true" data-target="4">غطى ← فعل غير ثلاثي</div>
+                        <div class="option" data-correct="true" data-target="4">دعا ← فعل ثلاثي</div>
+                    </div>
+                    
+                    <button onclick="checkAnswer(4)">تحقق من الإجابة</button>
+                    
+                    <div class="feedback" id="feedback-4">
+                        <!-- سيتم تعبئته بالجافاسكريبت -->
+                    </div>
+                </div>
             </div>
         </div>
-        <a href="#">الصفحة الرئيسية</a>
-    </nav>
-    <div class="container">
-        <h2>1. مقدمة الدرس</h2>
-        <p>الهدف العام: تعلم قواعد كتابة الألف في آخر الأسماء والأفعال، والتفرقة بين الألف المقصورة والألف الممدودة، مع توظيف أمثلة وتطبيقات تفاعلية.</p>
-
-        <h2>2. شرح القواعد</h2>
-
-        <h3>2.1. الألف المقصورة</h3>
-        <div class="example-box">
-            <p><strong>تعريف:</strong> ألف تكتب بدون همزة، وتكتب على شكل "ى".</p>
-            <p><strong>مواضع كتابتها:</strong></p>
-            <ul>
-                <li>في الأسماء الثلاثية المنقلبة عن ياء، مثل: "فتى" (أصلها: فتي).</li>
-                <li>في الأفعال الثلاثية المنقلبة عن ياء، مثل: "رمى" (أصلها: رمي).</li>
-                <li>في الأفعال غير الثلاثية إذا لم تسبق بياء، مثل: "استغنى" (أصلها: استغني).</li>
-            </ul>
-        </div>
-
-        <h3>2.2. الألف الممدودة</h3>
-        <div class="example-box">
-            <p><strong>تعريف:</strong> ألف تكتب على شكل "ا".</p>
-            <p><strong>مواضع كتابتها:</strong></p>
-            <ul>
-                <li>في الأسماء الثلاثية المنقلبة عن واو، مثل: "عصا" (أصلها: عصو).</li>
-                <li>في الأفعال الثلاثية المنقلبة عن واو، مثل: "دعا" (أصلها: دعو).</li>
-                <li>في الأفعال غير الثلاثية إذا سبقت بياء، مثل: "استغوى" (أصلها: استغوي).</li>
-            </ul>
-        </div>
-
-        <h2>3. أمثلة وتطبيقات تفاعلية</h2>
-
-        <h3>3.1. أمثلة توضيحية</h3>
-        <table>
-            <tr>
-                <th>الكلمة</th>
-                <th>نوع الألف</th>
-                <th>السبب</th>
-            </tr>
-            <tr>
-                <td>فتى</td>
-                <td>مقصورة</td>
-                <td>اسم ثلاثي منقلب عن ياء</td>
-            </tr>
-            <tr>
-                <td>رمى</td>
-                <td>مقصورة</td>
-                <td>فعل ثلاثي منقلب عن ياء</td>
-            </tr>
-            <tr>
-                <td>عصا</td>
-                <td>ممدودة</td>
-                <td>اسم ثلاثي منقلب عن واو</td>
-            </tr>
-            <tr>
-                <td>دعا</td>
-                <td>ممدودة</td>
-                <td>فعل ثلاثي منقلب عن واو</td>
-            </tr>
-            <tr>
-                <td>استغنى</td>
-                <td>مقصورة</td>
-                <td>فعل غير ثلاثي لم يسبق بياء</td>
-            </tr>
-            <tr>
-                <td>استغوى</td>
-                <td>ممدودة</td>
-                <td>فعل غير ثلاثي سبقت بياء</td>
-            </tr>
-        </table>
-
-        <h3>3.2. تمارين تفاعلية</h3>
-
-        <div class="exercise">
-            <h4>تمرين 1: اختر نوع الألف في الكلمات التالية</h4>
-            <ul>
-                <li>هوى: <button onclick="checkAnswer('مقصورة')">مقصورة</button></li>
-                <li>علا: <button onclick="checkAnswer('ممدودة')">ممدودة</button></li>
-                <li>سما: <button onclick="checkAnswer('ممدودة')">ممدودة</button></li>
-                <li>بنى: <button onclick="checkAnswer('مقصورة')">مقصورة</button></li>
-            </ul>
-        </div>
-
-        <div class="exercise">
-            <h4>تمرين 2: صحح الخطأ في الكلمات التالية</h4>
-            <ul>
-                <li>"قضى" (صحيح)</li>
-                <li>"استغنى" (صحيح)</li>
-                <li>"استغوى" (صحيح)</li>
-            </ul>
-        </div>
-
-        <h2>4. أنشطة تفاعلية</h2>
-
-        <h3>4.1. لعبة "صواب أو خطأ"</h3>
-        <div class="exercise">
-            <p>عرض مجموعة من الكلمات على الشاشة، ويطلب من الطالب تحديد نوع الألف (مقصورة/ممدودة) باستخدام زرين: "صواب" و"خطأ".</p>
-            <p>مثال: "هوى" → مقصورة (صواب).</p>
-        </div>
-
-        <h3>4.2. لعبة "اكتب الكلمة الصحيحة"</h3>
-        <div class="exercise">
-            <p>عرض جملة تحتوي على كلمة مكتوبة خطأ، ويطلب من الطالب كتابة الكلمة الصحيحة.</p>
-            <p>مثال: "استغوى" (خطأ) → "استغنى" (صحيح).</p>
-        </div>
-
-        <h2>5. تقويم الدرس</h2>
-        <div class="exercise">
-            <p>اختبار قصير: مجموعة من الأسئلة الاختيارية حول قواعد الألف المقصورة والممدودة.</p>
-            <p>تطبيق عملي: كتابة فقرة قصيرة تحتوي على كلمات تتضمن الألف المقصورة والممدودة.</p>
-        </div>
-
-        <h2>6. معلومات إضافية من كتاب الطالب</h2>
-        <div class="example-box">
-            <p>في عام 526، وفي أوج تشتّت الإمبراطورية الرومانية، طوى الظلام أوروبا والصين والشرق الأوسط بسبب انفجار بركاني ألقى كمًا هائلًا من الرماد. دنا فيه الدخان إلى سطح الأرض، فغطى الضباب الشمس مدة تزيد على العام، وتفشى المرض والجوع، فاستعيا الناس وقضى كثير منهم نحبهم، فكانت سنة من أشد السنوات على البشرية.</p>
-            <p>الألف في الفعلين (طوى، قضى) جاءتا مقصورتين، بينما جاء الألف في الفعل (دنا) ممدودة.</p>
-        </div>
-
-        <h2>7. تمارين إضافية</h2>
-        <div class="exercise">
-            <p>املأ الجدول الآتي كما في المثال:</p>
-            <table>
-                <tr>
-                    <th>الكلمة</th>
-                    <th>أصل الألف</th>
-                </tr>
-                <tr>
-                    <td>رجا</td>
-                    <td>رجو</td>
-                </tr>
-                <tr>
-                    <td>بنى</td>
-                    <td>بني</td>
-                </tr>
-                <tr>
-                    <td>سما</td>
-                    <td>سمو</td>
-                </tr>
-                <tr>
-                    <td>عفا</td>
-                    <td>عفو</td>
-                </tr>
-            </table>
+        
+        <div class="side-content">
+            <div class="section">
+                <h3><i class="fas fa-lightbulb"></i> تذكر دائماً</h3>
+                
+                <div class="summary-box">
+                    <h4>قواعد أساسية من الكتاب</h4>
+                    <ul class="summary-list">
+                        <li>لتعرف أصل الألف في الفعل الثلاثي، ارجع إلى مضارعه</li>
+                        <li>إذا كان الفعل المضارع ينتهي بواو، فالألف في الماضي ممدودة</li>
+                        <li>إذا كان الفعل المضارع ينتهي بياء، فالألف في الماضي مقصورة</li>
+                        <li>الأفعال غير الثلاثية تكتب ألفها مقصورة عادة</li>
+                        <li>إذا سبقت الألف بياء في الفعل غير الثلاثي، تكتب ممدودة</li>
+                        <li>تذكر الأمثلة من الكتاب: دعا، عصا، هدى، رمى</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3><i class="fas fa-book"></i> أمثلة حقيقية من الكتاب</h3>
+                
+                <div class="examples">
+                    <div class="example-item">
+                        <p><strong>من الصفحة 45:</strong></p>
+                        <p>في عام ٣٦ ... <span class="correct">طوى</span> الظلام أوروبا</p>
+                        <p>طوى ← يطوي ← ألف مقصورة</p>
+                    </div>
+                    
+                    <div class="example-item">
+                        <p><strong>من الصفحة 45:</strong></p>
+                        <p>ف<span class="correct">دنا</span> الدخان إلى سطح الأرض</p>
+                        <p>دنا ← يدنو ← ألف ممدودة</p>
+                    </div>
+                    
+                    <div class="example-item">
+                        <p><strong>من الصفحة 47:</strong></p>
+                        <p>الأفعال غير الثلاثية: <span class="correct">انقى، غطى، تفضي</span></p>
+                        <p>كلها ألف مقصورة لأنها أفعال غير ثلاثية</p>
+                    </div>
+                    
+                    <div class="example-item">
+                        <p><strong>من الصفحة 47:</strong></p>
+                        <p>الفعل: <span class="correct">استحيا</span></p>
+                        <p>ألف ممدودة لأنه فعل غير ثلاثي سبق بياء</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3><i class="fas fa-tasks"></i> نصائح من دليل المعلم</h3>
+                
+                <div class="summary-box">
+                    <ul class="summary-list">
+                        <li>اطلب من الطلاب تحويل الأفعال من الماضي إلى المضارع</li>
+                        <li>استخدم أسلوب "اكتشف القاعدة" بدلاً من "حفظ القاعدة"</li>
+                        <li>قدّم أمثلة كثيرة متنوعة</li>
+                        <li>ركز على التدريب العملي أكثر من الشرح النظري</li>
+                        <li>استخدم ألعاب لغوية لتثبيت المعلومة</li>
+                        <li>اطلب من الطلاب إيجاد أمثلة من نصوص القراءة</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+    
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 | الأستاذ خليل البلوشي</p>
+        <p>تم تصميم هذا الدرس التفاعلي بناءً على كتاب الطالب "مهاراتي في الكتابة" للصف الخامس - الفصل الدراسي الثاني</p>
+        <p>وحدة: رياضتي وصحتي - المحور الخامس - الأنشطة الإملائية: الألف في آخر الأفعال</p>
+        <p style="margin-top: 10px;">© 2025/2026 - وزارة التربية والتعليم - سلطنة عمان</p>
     </footer>
 
     <script>
-        function checkAnswer(answer) {
-            alert("الإجابة الصحيحة: " + answer);
+        // تعريف متغيرات التمارين
+        let selectedOptions = {};
+        
+        // إعداد خيارات التمارين
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                
+                // إذا كان التمرين الرابع (متعدد الإجابات)
+                if (target === '4') {
+                    this.classList.toggle('selected');
+                    selectedOptions[target] = selectedOptions[target] || {};
+                    selectedOptions[target][this.textContent] = this;
+                    return;
+                }
+                
+                // إلغاء تحديد جميع الخيارات في نفس السؤال (للتمارين العادية)
+                document.querySelectorAll(`[data-target="${target}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // تحديد الخيار الحالي
+                this.classList.add('selected');
+                
+                // حفظ الخيار المحدد
+                selectedOptions[target] = {
+                    element: this,
+                    isCorrect: this.getAttribute('data-correct') === 'true',
+                    text: this.textContent
+                };
+            });
+        });
+        
+        // دالة التحقق من الإجابة
+        function checkAnswer(questionNum) {
+            const feedbackElement = document.getElementById(`feedback-${questionNum}`);
+            
+            if (questionNum === 4) {
+                // التمرين الرابع (متعدد الإجابات)
+                const selected = selectedOptions[questionNum];
+                
+                if (!selected || Object.keys(selected).length === 0) {
+                    alert('يرجى اختيار إجابة أولاً!');
+                    return;
+                }
+                
+                let allCorrect = true;
+                let selectedCount = 0;
+                
+                // التحقق من جميع الخيارات
+                document.querySelectorAll(`[data-target="${questionNum}"]`).forEach(option => {
+                    const isSelected = option.classList.contains('selected');
+                    const isCorrect = option.getAttribute('data-correct') === 'true';
+                    
+                    if (isSelected) selectedCount++;
+                    
+                    // إذا اخترت إجابة خاطئة أو لم تختر إجابة صحيحة
+                    if ((isSelected && !isCorrect) || (!isSelected && isCorrect)) {
+                        allCorrect = false;
+                    }
+                });
+                
+                if (allCorrect && selectedCount === 4) {
+                    feedbackElement.textContent = 'إجابة صحيحة! أحسنت! جميع التصنيفات صحيحة.';
+                    feedbackElement.className = 'feedback correct-feedback';
+                    feedbackElement.style.display = 'block';
+                } else {
+                    feedbackElement.textContent = 'بعض الإجابات غير صحيحة. حاول مرة أخرى!';
+                    feedbackElement.className = 'feedback incorrect-feedback';
+                    feedbackElement.style.display = 'block';
+                    
+                    // إظهار الإجابات الصحيحة
+                    let correctAnswers = `
+                        <br><br><strong>التصحيح:</strong><br>
+                        - انقى ← فعل غير ثلاثي ✓<br>
+                        - هدى ← فعل ثلاثي ✓<br>
+                        - غطى ← فعل غير ثلاثي ✓<br>
+                        - دعا ← فعل ثلاثي ✓
+                    `;
+                    
+                    feedbackElement.innerHTML += correctAnswers;
+                }
+                
+                return;
+            }
+            
+            // التمارين العادية (1، 2، 3)
+            const selected = selectedOptions[questionNum];
+            
+            if (!selected) {
+                alert('يرجى اختيار إجابة أولاً!');
+                return;
+            }
+            
+            if (selected.isCorrect) {
+                feedbackElement.textContent = 'إجابة صحيحة! أحسنت!';
+                feedbackElement.className = 'feedback correct-feedback';
+                feedbackElement.style.display = 'block';
+                
+                // في حالة التمرين الأول، إظهار الإجابة في المكان المناسب
+                if (questionNum === 1) {
+                    document.getElementById('question-1').textContent = 'ا';
+                    document.getElementById('question-1').className = 'correct';
+                }
+            } else {
+                feedbackElement.textContent = 'إجابة غير صحيحة. حاول مرة أخرى!';
+                feedbackElement.className = 'feedback incorrect-feedback';
+                feedbackElement.style.display = 'block';
+                
+                // إظهار الإجابة الصحيحة بعد الخطأ
+                let correctAnswerText = '';
+                
+                if (questionNum === 1) {
+                    correctAnswerText = 'الإجابة الصحيحة: ا (ممدودة) لأن أصلها واو في المضارع (يدعو)';
+                    document.getElementById('question-1').textContent = 'ا';
+                    document.getElementById('question-1').className = 'correct';
+                } else if (questionNum === 2) {
+                    correctAnswerText = 'الإجابة الصحيحة: كلمة "شدى" مكتوبة بشكل صحيح لأنها فعل ثلاثي وأصلها ياء في المضارع (يشدي)';
+                } else if (questionNum === 3) {
+                    correctAnswerText = 'الإجابة الصحيحة: لأنها فعل غير ثلاثي سُبقت بياء (كما في صفحة 47 من الكتاب)';
+                }
+                
+                feedbackElement.innerHTML += `<br><br><strong>التصحيح:</strong> ${correctAnswerText}`;
+            }
         }
+        
+        // إضافة جدول توضيحي عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة مزيد من الأمثلة من الكتاب
+            const examplesSection = document.querySelector('.examples');
+            const newExamples = document.createElement('div');
+            newExamples.className = 'examples';
+            newExamples.innerHTML = `
+                <h4 style="color: #1a5f7a; margin-bottom: 15px;">أمثلة إضافية من التمارين (صفحة 48):</h4>
+                <div class="example-item">
+                    <p>تمرين تصويب الخطأ:</p>
+                    <p><span class="correct">تُلا المُصليّ أبا</span> ← تصويب: <span class="incorrect">أبًا</span> إلى <span class="correct">أباً</span></p>
+                </div>
+                <div class="example-item">
+                    <p><span class="correct">استلقى المريض على سريره</span> ← تصويب: <span class="incorrect">استلقى</span> إلى <span class="correct">استلقا</span></p>
+                    <p><small>(لأنه فعل غير ثلاثي سبق بياء)</small></p>
+                </div>
+                <div class="example-item">
+                    <p><span class="correct">شدى الطيرٌ على غصن الشجرة</span> ← صحيحة</p>
+                    <p><small>(شدى فعل ثلاثي، مضارعه يشدي، فألفه مقصورة)</small></p>
+                </div>
+            `;
+            
+            if (examplesSection && examplesSection.parentNode) {
+                examplesSection.parentNode.insertBefore(newExamples, examplesSection.nextSibling);
+            }
+        });
     </script>
 </body>
 </html>
