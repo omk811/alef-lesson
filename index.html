@@ -3,262 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدرس التفاعلي: الألف في آخر الأفعال</title>
+    <title>الألف في آخر الأفعال - درس تفاعلي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --main-color: #1a5f7a;
-            --secondary-color: #2a9d8f;
-            --accent-color: #e76f51;
-            --bg-color: #f8fbfd;
+        * { font-family: 'Tajawal', sans-serif; }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--secondary-color);
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-        }
-
-        h1 { color: var(--main-color); margin-bottom: 10px; }
-        h2 { color: var(--secondary-color); font-size: 1.5rem; }
-
-        .section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #fff;
-            border: 1px solid #eef2f5;
-        }
-
-        .rule-box {
-            background-color: #f0f9f7;
-            border-right: 6px solid var(--secondary-color);
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .highlight { color: var(--accent-color); font-weight: bold; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: #fff;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-
-        th { background: var(--main-color); color: white; }
-
-        /* التمارين */
-        .exercise-card {
-            background: #fff;
-            border: 2px solid #eef2f5;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        .exercise-card:hover { border-color: var(--secondary-color); }
-
-        .options-group {
-            display: flex;
-            gap: 15px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-
-        .btn-option {
-            background: #f1f1f1;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 1rem;
-        }
-
-        .btn-option.selected {
-            background: var(--main-color);
-            color: white;
-        }
-
-        .check-btn {
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .feedback {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .correct { background: #d4edda; color: #155724; }
-        .incorrect { background: #f8d7da; color: #721c24; }
-
-        .footer-info {
-            font-size: 0.9rem;
-            color: #666;
-            text-align: center;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
+        .section-btn.active { background: white; color: #0d9488; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transform: scale(1.05); }
+        .section-btn.completed { background: #4ade80; color: white; }
+        .alif-maqsura { color: #dc2626; font-weight: bold; }
+        .alif-mamduda { color: #2563eb; font-weight: bold; }
+        .highlight-box { transition: all 0.3s ease; }
+        .highlight-box:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
     </style>
 </head>
-<body>
+<body class="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50">
+    <div id="app" class="p-4 md:p-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 rounded-2xl p-6 mb-6 shadow-xl">
+                <h1 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">✍️ الألف في آخر الأفعال</h1>
+                <p class="text-teal-100 text-center text-lg">الصف الخامس - الفصل الدراسي الثاني - المحور الخامس</p>
+                
+                <!-- Navigation -->
+                <div id="nav-buttons" class="flex flex-wrap justify-center gap-2 mt-6"></div>
+            </div>
 
-<div class="container">
-    <header>
-        <h1>المحور الخامس: رياضتي وصحتي</h1>
-        <h2>الأنشطة الإملائية: الألف في آخر الأفعال</h2>
-    </header>
+            <!-- Progress Bar -->
+            <div class="bg-white rounded-full h-4 mb-6 shadow-inner overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-teal-400 to-emerald-500 transition-all duration-500 rounded-full" style="width: 0%"></div>
+            </div>
 
-    <div class="section">
-        <h3>1. الأفعال الثلاثية (حسب كتاب الطالب ص 46)</h3>
-        <p>لمعرفة شكل الألف، نرد الفعل الماضي إلى <span class="highlight">المضارع</span>:</p>
-        <table>
-            <tr>
-                <th>الماضي</th>
-                <th>المضارع</th>
-                <th>أصل الألف</th>
-                <th>شكل الكتابة</th>
-            </tr>
-            <tr>
-                <td>دعا / سما</td>
-                <td>يدعـ<span class="highlight">و</span> / يسمـ<span class="highlight">و</span></td>
-                <td>واو</td>
-                <td>ألف ممدودة (ا)</td>
-            </tr>
-            <tr>
-                <td>رمى / قضى</td>
-                <td>يرمـ<span class="highlight">ي</span> / يقضـ<span class="highlight">ي</span></td>
-                <td>ياء</td>
-                <td>ألف مقصورة (ى)</td>
-            </tr>
-        </table>
-        <div class="rule-box">
-            <strong>قاعدة ذهبية:</strong> إذا انتهى المضارع بـ (واو) اكتبها (ا)، وإذا انتهى بـ (ياء) اكتبها (ى).
+            <!-- Main Content -->
+            <div id="content" class="animate-fadeIn"></div>
+
+            <!-- Footer -->
+            <div class="text-center text-gray-500 text-sm mt-8 pb-4">
+                لغتي الجميلة - المحور الخامس: رياضتي وصحتي
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <h3>2. الأفعال غير الثلاثية (أكثر من 3 أحرف)</h3>
-        <p>تعتمد الكتابة هنا على الحرف الذي يسبق الألف مباشرة:</p>
-        <div class="rule-box">
-            <ul>
-                <li>تُكتب <strong>مقصورة (ى)</strong> في أغلب الحالات، مثل: <span class="highlight">صلى، استلقى، غطى</span>.</li>
-                <li>تُكتب <strong>ممدودة (ا)</strong> إذا سُبقت بـ <span class="highlight">ياء</span>، مثل: <span class="highlight">أحيا، تزيّا، استحيا</span>.</li>
-            </ul>
-        </div>
-    </div>
+    <script>
+        // Application State
+        let state = {
+            currentSection: 0,
+            score: 0,
+            completedSections: [],
+            currentQuizIndex: 0,
+            selectedAnswer: null,
+            showResult: false,
+            isCorrect: null,
+            showCelebration: false,
+            practiceIndex: 0,
+            showPracticeResult: false,
+            interactiveVerb: null
+        };
 
-    <div class="section">
-        <h3 style="color: var(--accent-color);">تطبيقات تفاعلية (من وحي الكتاب والدليل)</h3>
+        // Data
+        const sections = [
+            { id: 0, title: 'المقدمة', icon: '📚' },
+            { id: 1, title: 'الأفعال الثلاثية', icon: '٣' },
+            { id: 2, title: 'فوق الثلاثي', icon: '٤+' },
+            { id: 3, title: 'تدريب تفاعلي', icon: '🎮' },
+            { id: 4, title: 'التدريبات', icon: '💪' },
+            { id: 5, title: 'الاختبار', icon: '🎯' },
+            { id: 6, title: 'الخلاصة', icon: '🏆' },
+        ];
 
-        <div class="exercise-card" id="ex1">
-            <p><strong>س1:</strong> ما هو الرسم الصحيح للفعل الذي مضارعه <span class="highlight">"يشدو"</span>؟</p>
-            <div class="options-group">
-                <button class="btn-option" onclick="select(this, 'ex1')">شدى</button>
-                <button class="btn-option" onclick="select(this, 'ex1')" data-correct="true">شدا</button>
-            </div>
-            <button class="check-btn" onclick="checkAnswer('ex1')">تحقق</button>
-            <div class="feedback"></div>
-        </div>
+        // أمثلة الأفعال الثلاثية
+        const threeLetterVerbs = [
+            { past: 'دَنَا', present: 'يَدْنُو', root: 'واو', type: 'ممدودة', reason: 'أصلها واو (يدنو)' },
+            { past: 'سَمَا', present: 'يَسْمُو', root: 'واو', type: 'ممدودة', reason: 'أصلها واو (يسمو)' },
+            { past: 'عَلَا', present: 'يَعْلُو', root: 'واو', type: 'ممدودة', reason: 'أصلها واو (يعلو)' },
+            { past: 'نَمَا', present: 'يَنْمُو', root: 'واو', type: 'ممدودة', reason: 'أصلها واو (ينمو)' },
+            { past: 'رَجَا', present: 'يَرْجُو', root: 'واو', type: 'ممدودة', reason: 'أصلها واو (يرجو)' },
+            { past: 'طَوَى', present: 'يَطْوِي', root: 'ياء', type: 'مقصورة', reason: 'أصلها ياء (يطوي)' },
+            { past: 'قَضَى', present: 'يَقْضِي', root: 'ياء', type: 'مقصورة', reason: 'أصلها ياء (يقضي)' },
+            { past: 'سَرَى', present: 'يَسْرِي', root: 'ياء', type: 'مقصورة', reason: 'أصلها ياء (يسري)' },
+            { past: 'هَوَى', present: 'يَهْوِي', root: 'ياء', type: 'مقصورة', reason: 'أصلها ياء (يهوي)' },
+            { past: 'رَمَى', present: 'يَرْمِي', root: 'ياء', type: 'مقصورة', reason: 'أصلها ياء (يرمي)' },
+        ];
 
-        <div class="exercise-card" id="ex2">
-            <p><strong>س2:</strong> "الطالبُ <span class="highlight">......</span> بماله في أعمال الخير" (أكمل بفعل ثلاثي أصله واو)</p>
-            <div class="options-group">
-                <button class="btn-option" onclick="select(this, 'ex2')" data-correct="true">سما</button>
-                <button class="btn-option" onclick="select(this, 'ex2')">سمى</button>
-            </div>
-            <button class="check-btn" onclick="checkAnswer('ex2')">تحقق</button>
-            <div class="feedback"></div>
-        </div>
+        // أمثلة الأفعال فوق الثلاثية
+        const aboveThreeVerbs = [
+            { verb: 'أَوْفَى', letters: 4, type: 'مقصورة', reason: 'فعل رباعي (فوق ثلاثي)' },
+            { verb: 'أَعْطَى', letters: 4, type: 'مقصورة', reason: 'فعل رباعي (فوق ثلاثي)' },
+            { verb: 'أَلْقَى', letters: 4, type: 'مقصورة', reason: 'فعل رباعي (فوق ثلاثي)' },
+            { verb: 'اسْتَوْفَى', letters: 6, type: 'مقصورة', reason: 'فعل سداسي (فوق ثلاثي)' },
+            { verb: 'اسْتَعْلَى', letters: 6, type: 'مقصورة', reason: 'فعل سداسي (فوق ثلاثي)' },
+            { verb: 'تَفَشَّى', letters: 5, type: 'مقصورة', reason: 'فعل خماسي (فوق ثلاثي)' },
+            { verb: 'اهْتَدَى', letters: 5, type: 'مقصورة', reason: 'فعل خماسي (فوق ثلاثي)' },
+        ];
 
-        <div class="exercise-card" id="ex3">
-            <p><strong>س3:</strong> الفعل <span class="highlight">"استلقى"</span> كُتب بألف مقصورة لأنه:</p>
-            <div class="options-group">
-                <button class="btn-option" onclick="select(this, 'ex3')">أصله ياء في المضارع</button>
-                <button class="btn-option" onclick="select(this, 'ex3')" data-correct="true">فعل غير ثلاثي لم يسبق بياء</button>
-            </div>
-            <button class="check-btn" onclick="checkAnswer('ex3')">تحقق</button>
-            <div class="feedback"></div>
-        </div>
+        const quizQuestions = [
+            {
+                question: 'كيف تُكتب الألف في الفعل "دنا"؟',
+                options: ['ألف ممدودة (ا)', 'ألف مقصورة (ى)'],
+                correct: 0,
+                explanation: 'تُكتب ألفاً ممدودة لأن أصلها واو (يدنو)'
+            },
+            {
+                question: 'كيف تُكتب الألف في الفعل "قضى"؟',
+                options: ['ألف ممدودة (ا)', 'ألف مقصورة (ى)'],
+                correct: 1,
+                explanation: 'تُكتب ألفاً مقصورة لأن أصلها ياء (يقضي)'
+            },
+            {
+                question: 'ما طريقة معرفة أصل الألف في الأفعال الثلاثية؟',
+                options: ['الرجوع إلى الماضي', 'الرجوع إلى المضارع', 'الرجوع إلى الأمر'],
+                correct: 1,
+                explanation: 'نرجع إلى المضارع لمعرفة أصل الألف'
+            },
+            {
+                question: 'الفعل "أوفى" يُكتب بألف:',
+                options: ['ممدودة لأنه ثلاثي', 'مقصورة لأنه فوق ثلاثي', 'ممدودة لأنه فوق ثلاثي'],
+                correct: 1,
+                explanation: 'الأفعال فوق الثلاثية تُكتب ألفها مقصورة دائماً'
+            },
+            {
+                question: 'أي الأفعال التالية تُكتب ألفه ممدودة؟',
+                options: ['هوى', 'سما', 'رمى'],
+                correct: 1,
+                explanation: 'سما تُكتب بألف ممدودة لأن أصلها واو (يسمو)'
+            },
+            {
+                question: 'الفعل "استوفى" يُكتب بألف مقصورة لأنه:',
+                options: ['أصله ياء', 'فعل فوق ثلاثي', 'فعل ماضٍ'],
+                correct: 1,
+                explanation: 'استوفى فعل سداسي (فوق ثلاثي) فتُكتب ألفه مقصورة'
+            },
+            {
+                question: 'إذا كان المضارع "يعلو"، فالماضي يُكتب:',
+                options: ['علا', 'على'],
+                correct: 0,
+                explanation: 'يُكتب "علا" بألف ممدودة لأن المضارع ينتهي بواو'
+            },
+            {
+                question: 'إذا كان المضارع "يسري"، فالماضي يُكتب:',
+                options: ['سرا', 'سرى'],
+                correct: 1,
+                explanation: 'يُكتب "سرى" بألف مقصورة لأن المضارع ينتهي بياء'
+            }
+        ];
 
-        <div class="exercise-card" id="ex4">
-            <p><strong>س4:</strong> أي من الأفعال التالية كُتب بشكل <span class="highlight">خاطئ</span>؟</p>
-            <div class="options-group">
-                <button class="btn-option" onclick="select(this, 'ex4')">استحيا</button>
-                <button class="btn-option" onclick="select(this, 'ex4')" data-correct="true">أحيى</button>
-                <button class="btn-option" onclick="select(this, 'ex4')">غطى</button>
-            </div>
-            <button class="check-btn" onclick="checkAnswer('ex4')">تحقق</button>
-            <div class="feedback"></div>
-        </div>
-    </div>
+        const practiceExercises = [
+            { verb: 'طوى', present: 'يطوي', answer: 'مقصورة', reason: 'لأن أصلها ياء' },
+            { verb: 'دعا', present: 'يدعو', answer: 'ممدودة', reason: 'لأن أصلها واو' },
+            { verb: 'بنى', present: 'يبني', answer: 'مقصورة', reason: 'لأن أصلها ياء' },
+            { verb: 'غزا', present: 'يغزو', answer: 'ممدودة', reason: 'لأن أصلها واو' },
+            { verb: 'أعطى', present: '-', answer: 'مقصورة', reason: 'لأنه فوق ثلاثي' },
+        ];
 
-    <div class="footer-info">
-        تم إعداد هذا الدرس بناءً على منهج سلطنة عمان - مهاراتي في الكتابة (الصف الخامس)
-    </div>
-</div>
-
-<script>
-    function select(element, exId) {
-        const parent = document.getElementById(exId);
-        const options = parent.querySelectorAll('.btn-option');
-        options.forEach(opt => opt.classList.remove('selected'));
-        element.classList.add('selected');
-    }
-
-    function checkAnswer(exId) {
-        const parent = document.getElementById(exId);
-        const selected = parent.querySelector('.btn-option.selected');
-        const feedback = parent.querySelector('.feedback');
-
-        if (!selected) {
-            alert("يرجى اختيار إجابة أولاً!");
-            return;
+        // Render Functions
+        function renderNav() {
+            const nav = document.getElementById('nav-buttons');
+            nav.innerHTML = sections.map(section => `
+                <button onclick="goToSection(${section.id})" 
+                    class="section-btn px-3 py-2 rounded-full text-sm font-bold transition-all ${
+                        state.currentSection === section.id ? 'active' : 
+                        state.completedSections.includes(section.id) ? 'completed' : 'bg-white/20 text-white hover:bg-white/30'
+                    }">
+                    ${section.icon} ${section.title}
+                </button>
+            `).join('');
         }
 
-        feedback.style.display = "block";
-        if (selected.hasAttribute('data-correct')) {
-            feedback.className = "feedback correct";
-            feedback.innerHTML = "✓ إجابة صحيحة! أحسنت في تطبيق القاعدة.";
-        } else {
-            feedback.className = "feedback incorrect";
-            feedback.innerHTML = "✗ إجابة غير دقيقة. فكر في أصل الفعل أو عدد حروفه.";
+        function updateProgress() {
+            const progress = (state.completedSections.length / sections.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
         }
-    }
-</script>
+
+        function goToSection(id) {
+            state.currentSection = id;
+            render();
+        }
+
+        function markComplete(id) {
+            if (!state.completedSections.includes(id)) {
+                state.completedSections.push(id);
+            }
+        }
+
+        // Section Renderers
+        function renderIntroduction() {
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-8 border-2 border-teal-200 shadow-lg">
+                        <h2 class="text-3xl font-bold text-teal-800 mb-6 text-center">🌟 مرحباً بك في درس الألف في آخر الأفعال</h2>
+                        
+                        <div class="bg-white/80 rounded-xl p-6 mb-6">
+                            <h3 class="text-xl font-bold text-teal-700 mb-4">📖 ماذا ستتعلم؟</h3>
+                            <ul class="space-y-3 text-lg text-gray-700">
+                                <li class="flex items-center gap-3">
+                                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold">١</span>
+                                    <span>متى تُكتب الألف <span class="alif-mamduda">ممدودة (ا)</span> في آخر الأفعال</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold">٢</span>
+                                    <span>متى تُكتب الألف <span class="alif-maqsura">مقصورة (ى)</span> في آخر الأفعال</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold">٣</span>
+                                    <span>طريقة معرفة أصل الألف بالرجوع إلى المضارع</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold">٤</span>
+                                    <span>الفرق بين الأفعال الثلاثية وفوق الثلاثية</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-100 rounded-xl p-5 border-2 border-blue-300">
+                                <div class="text-4xl text-center mb-2">ا</div>
+                                <h4 class="text-xl font-bold text-blue-700 text-center mb-2">الألف الممدودة</h4>
+                                <p class="text-gray-700 text-center">تُكتب في الأفعال الثلاثية إذا كان أصلها <strong>واواً</strong></p>
+                                <div class="text-center mt-2 text-blue-600 font-bold">مثال: دَنَا ← يَدْنُو</div>
+                            </div>
+                            <div class="bg-red-100 rounded-xl p-5 border-2 border-red-300">
+                                <div class="text-4xl text-center mb-2">ى</div>
+                                <h4 class="text-xl font-bold text-red-700 text-center mb-2">الألف المقصورة</h4>
+                                <p class="text-gray-700 text-center">تُكتب في الأفعال الثلاثية إذا كان أصلها <strong>ياءً</strong></p>
+                                <div class="text-center mt-2 text-red-600 font-bold">مثال: قَضَى ← يَقْضِي</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="markComplete(0); goToSection(1);" class="w-full py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xl font-bold rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all transform hover:scale-[1.02] shadow-lg">
+                        ابدأ التعلم ←
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderThreeLetter() {
+            const wawVerbs = threeLetterVerbs.filter(v => v.root === 'واو');
+            const yaaVerbs = threeLetterVerbs.filter(v => v.root === 'ياء');
+            
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 border-2 border-indigo-200">
+                        <h2 class="text-2xl font-bold text-indigo-800 mb-6 text-center">٣ الألف في الأفعال الثلاثية</h2>
+                        
+                        <div class="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 mb-6">
+                            <p class="text-lg text-yellow-800 text-center font-bold">
+                                💡 لمعرفة أصل الألف في الأفعال الثلاثية، نرجع إلى <span class="text-purple-700">صيغة المضارع</span>
+                            </p>
+                        </div>
+
+                        <!-- القاعدة -->
+                        <div class="bg-white rounded-xl p-6 mb-6 border-2 border-indigo-200">
+                            <h3 class="text-xl font-bold text-indigo-700 mb-4 text-center">📌 القاعدة</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-5 shadow-lg highlight-box">
+                                    <div class="text-5xl text-center mb-3">ا</div>
+                                    <h4 class="text-xl font-bold text-center mb-3">تُكتب ألفاً ممدودة</h4>
+                                    <div class="bg-white/20 rounded-lg p-3 text-center">
+                                        <p>إذا كان أصلها <strong>واواً</strong></p>
+                                        <p class="text-sm mt-2">المضارع ينتهي بـ (و)</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl p-5 shadow-lg highlight-box">
+                                    <div class="text-5xl text-center mb-3">ى</div>
+                                    <h4 class="text-xl font-bold text-center mb-3">تُكتب ألفاً مقصورة</h4>
+                                    <div class="bg-white/20 rounded-lg p-3 text-center">
+                                        <p>إذا كان أصلها <strong>ياءً</strong></p>
+                                        <p class="text-sm mt-2">المضارع ينتهي بـ (ي)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- أمثلة الواو -->
+                        <div class="bg-blue-50 rounded-xl p-5 mb-4 border-2 border-blue-200">
+                            <h4 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                                <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center">ا</span>
+                                أفعال أصلها واو (تُكتب ممدودة)
+                            </h4>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                ${wawVerbs.map(v => `
+                                    <div class="bg-white rounded-lg p-3 text-center shadow hover:shadow-lg transition-all cursor-pointer" onclick="showVerbDetails('${v.past}', '${v.present}', '${v.type}', '${v.reason}')">
+                                        <div class="text-2xl font-bold text-blue-600">${v.past}</div>
+                                        <div class="text-sm text-gray-500">← ${v.present}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- أمثلة الياء -->
+                        <div class="bg-red-50 rounded-xl p-5 border-2 border-red-200">
+                            <h4 class="text-lg font-bold text-red-700 mb-4 flex items-center gap-2">
+                                <span class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center">ى</span>
+                                أفعال أصلها ياء (تُكتب مقصورة)
+                            </h4>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                ${yaaVerbs.map(v => `
+                                    <div class="bg-white rounded-lg p-3 text-center shadow hover:shadow-lg transition-all cursor-pointer" onclick="showVerbDetails('${v.past}', '${v.present}', '${v.type}', '${v.reason}')">
+                                        <div class="text-2xl font-bold text-red-600">${v.past}</div>
+                                        <div class="text-sm text-gray-500">← ${v.present}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- نافذة التفاصيل -->
+                        <div id="verb-details" class="hidden mt-4 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl p-5 border-2 border-purple-300"></div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToSection(0)" class="flex-1 py-3 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 transition-all">→ السابق</button>
+                        <button onclick="markComplete(1); goToSection(2);" class="flex-1 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-xl hover:from-indigo-600 hover:to-purple-600 transition-all">التالي ←</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showVerbDetails(past, present, type, reason) {
+            const detailsDiv = document.getElementById('verb-details');
+            const colorClass = type === 'ممدودة' ? 'blue' : 'red';
+            detailsDiv.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-3xl font-bold text-${colorClass}-600">${past}</span>
+                        <span class="text-xl text-gray-500 mx-3">←</span>
+                        <span class="text-2xl font-bold text-purple-600">${present}</span>
+                    </div>
+                    <div class="bg-${colorClass}-500 text-white px-4 py-2 rounded-full font-bold">
+                        ألف ${type}
+                    </div>
+                </div>
+                <p class="mt-3 text-gray-700 text-lg">✅ ${reason}</p>
+            `;
+            detailsDiv.classList.remove('hidden');
+        }
+
+        function renderAboveThree() {
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-6 border-2 border-emerald-200">
+                        <h2 class="text-2xl font-bold text-emerald-800 mb-6 text-center">٤+ الألف في الأفعال فوق الثلاثية</h2>
+                        
+                        <div class="bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-xl p-6 mb-6">
+                            <h3 class="text-2xl font-bold text-center mb-3">📌 القاعدة الذهبية</h3>
+                            <p class="text-xl text-center">
+                                الأفعال فوق الثلاثية (الرباعية والخماسية والسداسية) تُكتب ألفها <span class="bg-white/30 px-3 py-1 rounded-lg font-bold">مقصورة (ى)</span> دائماً
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-6 mb-6 border-2 border-emerald-200">
+                            <h3 class="text-xl font-bold text-emerald-700 mb-4">🔢 تصنيف الأفعال حسب عدد الحروف</h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-emerald-50 rounded-xl p-4 border-2 border-emerald-200">
+                                    <div class="text-center mb-3">
+                                        <span class="bg-emerald-500 text-white text-2xl font-bold w-12 h-12 rounded-full inline-flex items-center justify-center">٤</span>
+                                    </div>
+                                    <h4 class="font-bold text-emerald-700 text-center mb-2">رباعي</h4>
+                                    <div class="space-y-2">
+                                        ${aboveThreeVerbs.filter(v => v.letters === 4).map(v => `
+                                            <div class="bg-white rounded-lg p-2 text-center">
+                                                <span class="text-xl font-bold text-emerald-600">${v.verb}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+
+                                <div class="bg-green-50 rounded-xl p-4 border-2 border-green-200">
+                                    <div class="text-center mb-3">
+                                        <span class="bg-green-500 text-white text-2xl font-bold w-12 h-12 rounded-full inline-flex items-center justify-center">٥</span>
+                                    </div>
+                                    <h4 class="font-bold text-green-700 text-center mb-2">خماسي</h4>
+                                    <div class="space-y-2">
+                                        ${aboveThreeVerbs.filter(v => v.letters === 5).map(v => `
+                                            <div class="bg-white rounded-lg p-2 text-center">
+                                                <span class="text-xl font-bold text-green-600">${v.verb}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+
+                                <div class="bg-teal-50 rounded-xl p-4 border-2 border-teal-200">
+                                    <div class="text-center mb-3">
+                                        <span class="bg-teal-500 text-white text-2xl font-bold w-12 h-12 rounded-full inline-flex items-center justify-center">٦</span>
+                                    </div>
+                                    <h4 class="font-bold text-teal-700 text-center mb-2">سداسي</h4>
+                                    <div class="space-y-2">
+                                        ${aboveThreeVerbs.filter(v => v.letters === 6).map(v => `
+                                            <div class="bg-white rounded-lg p-2 text-center">
+                                                <span class="text-xl font-bold text-teal-600">${v.verb}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 rounded-xl p-5 border-2 border-amber-300">
+                            <h4 class="font-bold text-amber-700 mb-3 flex items-center gap-2">
+                                <span class="text-2xl">💡</span> تذكّر الفرق
+                            </h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="bg-amber-200">
+                                            <th class="p-3 text-right">نوع الفعل</th>
+                                            <th class="p-3 text-right">القاعدة</th>
+                                            <th class="p-3 text-right">مثال</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-white">
+                                            <td class="p-3 font-bold">ثلاثي أصله واو</td>
+                                            <td class="p-3"><span class="alif-mamduda">ألف ممدودة (ا)</span></td>
+                                            <td class="p-3">دَنَا، سَمَا، عَلَا</td>
+                                        </tr>
+                                        <tr class="bg-amber-50">
+                                            <td class="p-3 font-bold">ثلاثي أصله ياء</td>
+                                            <td class="p-3"><span class="alif-maqsura">ألف مقصورة (ى)</span></td>
+                                            <td class="p-3">قَضَى، رَمَى، هَوَى</td>
+                                        </tr>
+                                        <tr class="bg-white">
+                                            <td class="p-3 font-bold">فوق ثلاثي</td>
+                                            <td class="p-3"><span class="alif-maqsura">ألف مقصورة (ى)</span> دائماً</td>
+                                            <td class="p-3">أَوْفَى، اسْتَوْفَى</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToSection(1)" class="flex-1 py-3 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 transition-all">→ السابق</button>
+                        <button onclick="markComplete(2); goToSection(3);" class="flex-1 py-3 bg-gradient-to-r from-emerald-500 to-green-500 text-white font-bold rounded-xl hover:from-emerald-600 hover:to-green-600 transition-all">التالي ←</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderInteractive() {
+            const allVerbs = [
+                { past: 'بَكَى', present: 'يَبْكِي', type: 'مقصورة' },
+                { past: 'غَزَا', present: 'يَغْزُو', type: 'ممدودة' },
+                { past: 'مَشَى', present: 'يَمْشِي', type: 'مقصورة' },
+                { past: 'عَفَا', present: 'يَعْفُو', type: 'ممدودة' },
+                { past: 'نَجَا', present: 'يَنْجُو', type: 'ممدودة' },
+                { past: 'سَقَى', present: 'يَسْقِي', type: 'مقصورة' },
+            ];
+
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border-2 border-pink-200">
+                        <h2 class="text-2xl font-bold text-pink-800 mb-6 text-center">🎮 تدريب تفاعلي</h2>
+                        
+                        <div class="bg-white rounded-xl p-6 mb-6 border-2 border-pink-200">
+                            <h3 class="text-xl font-bold text-pink-700 mb-4 text-center">اختر نوع الألف الصحيح لكل فعل</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-4">
+                                ${allVerbs.map((v, i) => `
+                                    <div id="interactive-${i}" class="bg-pink-50 rounded-xl p-4 border-2 border-pink-200">
+                                        <div class="text-center mb-3">
+                                            <span class="text-2xl font-bold text-pink-700">${v.past.replace('ا', '_').replace('ى', '_')}</span>
+                                            <span class="text-gray-500 mx-2">←</span>
+                                            <span class="text-lg text-purple-600">${v.present}</span>
+                                        </div>
+                                        <div class="flex gap-2 justify-center">
+                                            <button onclick="checkInteractive(${i}, 'ممدودة', '${v.type}')" class="px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-all">
+                                                ا (ممدودة)
+                                            </button>
+                                            <button onclick="checkInteractive(${i}, 'مقصورة', '${v.type}')" class="px-4 py-2 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 transition-all">
+                                                ى (مقصورة)
+                                            </button>
+                                        </div>
+                                        <div id="result-${i}" class="mt-3 text-center hidden"></div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToSection(2)" class="flex-1 py-3 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 transition-all">→ السابق</button>
+                        <button onclick="markComplete(3); goToSection(4);" class="flex-1 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold rounded-xl hover:from-pink-600 hover:to-rose-600 transition-all">التالي ←</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkInteractive(index, selected, correct) {
+            const resultDiv = document.getElementById(`result-${index}`);
+            const container = document.getElementById(`interactive-${index}`);
+            
+            if (selected === correct) {
+                resultDiv.innerHTML = '<span class="text-green-600 font-bold">✅ إجابة صحيحة!</span>';
+                container.classList.add('bg-green-100', 'border-green-400');
+                container.classList.remove('bg-pink-50', 'border-pink-200');
+            } else {
+                resultDiv.innerHTML = `<span class="text-red-600 font-bold">❌ الإجابة الصحيحة: ${correct}</span>`;
+                container.classList.add('bg-red-100', 'border-red-400');
+                container.classList.remove('bg-pink-50', 'border-pink-200');
+            }
+            resultDiv.classList.remove('hidden');
+            
+            // تعطيل الأزرار
+            container.querySelectorAll('button').forEach(btn => btn.disabled = true);
+        }
+
+        function renderPractice() {
+            const exercise = practiceExercises[state.practiceIndex];
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 border-2 border-orange-200">
+                        <h2 class="text-2xl font-bold text-orange-800 mb-6 text-center">💪 تدريبات تطبيقية</h2>
+                        
+                        <div class="bg-white rounded-xl p-6 mb-6 border-2 border-orange-200">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm font-bold text-orange-600">تدريب ${state.practiceIndex + 1} من ${practiceExercises.length}</span>
+                                <div class="flex gap-1">
+                                    ${practiceExercises.map((_, i) => `<div class="w-3 h-3 rounded-full ${i <= state.practiceIndex ? 'bg-orange-500' : 'bg-gray-200'}"></div>`).join('')}
+                                </div>
+                            </div>
+
+                            <div class="bg-orange-50 rounded-lg p-4 mb-4">
+                                <p class="text-lg font-bold text-orange-700">حدد نوع الألف في الفعل التالي:</p>
+                            </div>
+
+                            <div class="text-center mb-6">
+                                <span class="text-4xl font-bold text-gray-800 bg-yellow-100 px-6 py-3 rounded-xl">${exercise.verb}</span>
+                                ${exercise.present !== '-' ? `<div class="mt-2 text-lg text-purple-600">المضارع: ${exercise.present}</div>` : '<div class="mt-2 text-lg text-gray-500">(فعل فوق ثلاثي)</div>'}
+                            </div>
+
+                            ${!state.showPracticeResult ? `
+                                <div class="flex gap-4 justify-center">
+                                    <button onclick="checkPractice('ممدودة')" class="px-6 py-3 bg-blue-500 text-white text-lg font-bold rounded-xl hover:bg-blue-600 transition-all">
+                                        ألف ممدودة (ا)
+                                    </button>
+                                    <button onclick="checkPractice('مقصورة')" class="px-6 py-3 bg-red-500 text-white text-lg font-bold rounded-xl hover:bg-red-600 transition-all">
+                                        ألف مقصورة (ى)
+                                    </button>
+                                </div>
+                            ` : `
+                                <div class="space-y-4">
+                                    <div class="${state.isCorrect ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'} rounded-xl p-4 border-2">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="text-2xl">${state.isCorrect ? '🎉' : '💡'}</span>
+                                            <span class="font-bold ${state.isCorrect ? 'text-green-700' : 'text-red-700'}">${state.isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة'}</span>
+                                        </div>
+                                        <p class="text-gray-700">الإجابة الصحيحة: <strong>ألف ${exercise.answer}</strong> ${exercise.reason}</p>
+                                    </div>
+                                    
+                                    ${state.practiceIndex < practiceExercises.length - 1 ? `
+                                        <button onclick="nextPractice()" class="w-full py-3 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-all">
+                                            التدريب التالي ←
+                                        </button>
+                                    ` : `
+                                        <button onclick="markComplete(4); goToSection(5);" class="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl hover:from-orange-600 hover:to-amber-600 transition-all">
+                                            انتقل إلى الاختبار 🎯
+                                        </button>
+                                    `}
+                                </div>
+                            `}
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToSection(3)" class="flex-1 py-3 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 transition-all">→ السابق</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkPractice(answer) {
+            const exercise = practiceExercises[state.practiceIndex];
+            state.isCorrect = answer === exercise.answer;
+            if (state.isCorrect) state.score++;
+            state.showPracticeResult = true;
+            render();
+        }
+
+        function nextPractice() {
+            state.practiceIndex++;
+            state.showPracticeResult = false;
+            state.isCorrect = null;
+            render();
+        }
+
+        function handleQuizAnswer(optionIndex) {
+            if (state.selectedAnswer !== null) return;
+            
+            state.selectedAnswer = optionIndex;
+            state.isCorrect = optionIndex === quizQuestions[state.currentQuizIndex].correct;
+            if (state.isCorrect) state.score++;
+            state.showResult = true;
+            render();
+        }
+
+        function nextQuestion() {
+            if (state.currentQuizIndex < quizQuestions.length - 1) {
+                state.currentQuizIndex++;
+                state.selectedAnswer = null;
+                state.isCorrect = null;
+                state.showResult = false;
+            } else {
+                state.showCelebration = true;
+                markComplete(5);
+            }
+            render();
+        }
+
+        function resetQuiz() {
+            state.currentQuizIndex = 0;
+            state.score = 0;
+            state.selectedAnswer = null;
+            state.isCorrect = null;
+            state.showResult = false;
+            state.showCelebration = false;
+            state.practiceIndex = 0;
+            state.showPracticeResult = false;
+            render();
+        }
+
+        function renderQuiz() {
+            if (state.showCelebration) {
+                return `
+                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 border-2 border-yellow-300 text-center animate-fadeIn">
+                        <div class="text-6xl mb-4">🏆</div>
+                        <h2 class="text-3xl font-bold text-amber-800 mb-4">أحسنت! أكملت الاختبار</h2>
+                        <div class="text-6xl font-bold text-amber-600 mb-4">${state.score} / ${quizQuestions.length}</div>
+                        <div class="text-xl text-gray-700 mb-6">
+                            ${state.score === quizQuestions.length ? 'ممتاز! إجابات كاملة 🌟' : 
+                             state.score >= quizQuestions.length * 0.7 ? 'أداء رائع! استمر 👏' : 'حاول مرة أخرى للتحسن 💪'}
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="resetQuiz()" class="flex-1 py-3 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition-all">أعد الاختبار</button>
+                            <button onclick="goToSection(6)" class="flex-1 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all">الخلاصة ←</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const question = quizQuestions[state.currentQuizIndex];
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-6 border-2 border-violet-200">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-violet-800">🎯 اختبر معلوماتك</h2>
+                            <div class="bg-violet-500 text-white px-4 py-2 rounded-full font-bold">${state.currentQuizIndex + 1} / ${quizQuestions.length}</div>
+                        </div>
+
+                        <div class="bg-white rounded-xl p-6 mb-6 border-2 border-violet-200">
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-6">
+                                <div class="bg-gradient-to-r from-violet-500 to-purple-500 h-3 rounded-full transition-all duration-500" style="width: ${((state.currentQuizIndex + 1) / quizQuestions.length) * 100}%"></div>
+                            </div>
+
+                            <p class="text-xl font-bold text-gray-800 mb-6 text-center">${question.question}</p>
+
+                            <div class="grid gap-3">
+                                ${question.options.map((option, index) => {
+                                    let classes = 'w-full py-4 px-6 text-lg font-bold rounded-xl transition-all transform';
+                                    if (state.selectedAnswer === null) {
+                                        classes += ' bg-violet-100 text-violet-800 hover:bg-violet-200 hover:scale-[1.02]';
+                                    } else if (state.selectedAnswer === index) {
+                                        classes += state.isCorrect ? ' bg-green-500 text-white' : ' bg-red-500 text-white';
+                                    } else if (index === question.correct) {
+                                        classes += ' bg-green-500 text-white';
+                                    } else {
+                                        classes += ' bg-gray-100 text-gray-500';
+                                    }
+                                    return `<button onclick="handleQuizAnswer(${index})" ${state.selectedAnswer !== null ? 'disabled' : ''} class="${classes}">${option}</button>`;
+                                }).join('')}
+                            </div>
+
+                            ${state.showResult ? `
+                                <div class="mt-6 p-4 rounded-xl ${state.isCorrect ? 'bg-green-100 border-2 border-green-300' : 'bg-red-100 border-2 border-red-300'}">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span class="text-2xl">${state.isCorrect ? '🎉' : '💡'}</span>
+                                        <span class="font-bold ${state.isCorrect ? 'text-green-700' : 'text-red-700'}">${state.isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة'}</span>
+                                    </div>
+                                    <p class="text-gray-700">${question.explanation}</p>
+                                    <button onclick="nextQuestion()" class="mt-4 w-full py-3 bg-violet-500 text-white font-bold rounded-xl hover:bg-violet-600 transition-all">
+                                        ${state.currentQuizIndex < quizQuestions.length - 1 ? 'السؤال التالي ←' : 'عرض النتيجة 🏆'}
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSummary() {
+            return `
+                <div class="space-y-6 animate-fadeIn">
+                    <div class="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-6 border-2 border-cyan-200">
+                        <h2 class="text-2xl font-bold text-cyan-800 mb-6 text-center">🏆 خلاصة الدرس</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white rounded-xl p-5 border-2 border-cyan-200 shadow-md">
+                                <h3 class="text-lg font-bold text-cyan-700 mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center">١</span>
+                                    الأفعال الثلاثية
+                                </h3>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="font-bold text-blue-700 mb-2">تُكتب ألفاً ممدودة (ا)</p>
+                                        <p class="text-gray-700">إذا كان أصلها <strong>واواً</strong> في المضارع</p>
+                                        <p class="text-sm text-blue-600 mt-2">مثال: دَنَا ← يَدْنُو</p>
+                                    </div>
+                                    <div class="bg-red-50 p-4 rounded-lg">
+                                        <p class="font-bold text-red-700 mb-2">تُكتب ألفاً مقصورة (ى)</p>
+                                        <p class="text-gray-700">إذا كان أصلها <strong>ياءً</strong> في المضارع</p>
+                                        <p class="text-sm text-red-600 mt-2">مثال: قَضَى ← يَقْضِي</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-5 border-2 border-cyan-200 shadow-md">
+                                <h3 class="text-lg font-bold text-cyan-700 mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center">٢</span>
+                                    الأفعال فوق الثلاثية
+                                </h3>
+                                <div class="bg-emerald-50 p-4 rounded-lg">
+                                    <p class="font-bold text-emerald-700 mb-2">تُكتب ألفاً مقصورة (ى) دائماً</p>
+                                    <p class="text-gray-700">سواء كانت رباعية أو خماسية أو سداسية</p>
+                                    <p class="text-sm text-emerald-600 mt-2">مثال: أَوْفَى، اسْتَوْفَى، تَفَشَّى</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-5 border-2 border-cyan-200 shadow-md">
+                                <h3 class="text-lg font-bold text-cyan-700 mb-3 flex items-center gap-2">
+                                    <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center">٣</span>
+                                    طريقة المعرفة
+                                </h3>
+                                <p class="text-gray-700">للأفعال الثلاثية: <strong>ارجع إلى المضارع</strong> لمعرفة أصل الألف</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-xl p-6 text-center">
+                            <div class="text-4xl mb-2">🎉</div>
+                            <h3 class="text-xl font-bold mb-2">تهانينا! أكملت الدرس بنجاح</h3>
+                            <p>لقد تعلمت قواعد كتابة الألف في آخر الأفعال</p>
+                        </div>
+                    </div>
+
+                    <button onclick="markComplete(6); resetQuiz(); goToSection(0);" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-xl font-bold rounded-xl hover:from-cyan-600 hover:to-teal-600 transition-all">
+                        العودة للبداية 🔄
+                    </button>
+                </div>
+            `;
+        }
+
+        function render() {
+            renderNav();
+            updateProgress();
+            
+            const content = document.getElementById('content');
+            switch(state.currentSection) {
+                case 0: content.innerHTML = renderIntroduction(); break;
+                case 1: content.innerHTML = renderThreeLetter(); break;
+                case 2: content.innerHTML = renderAboveThree(); break;
+                case 3: content.innerHTML = renderInteractive(); break;
+                case 4: content.innerHTML = renderPractice(); break;
+                case 5: content.innerHTML = renderQuiz(); break;
+                case 6: content.innerHTML = renderSummary(); break;
+                default: content.innerHTML = renderIntroduction();
+            }
+        }
+
+        // Initialize
+        render();
+    </script>
 </body>
 </html>
