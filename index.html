@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>درس تفاعلي: الألف في آخر الأسماء والأفعال (ا / ى)</title>
+  <meta name="description" content="درس تفاعلي للألف في آخر الأسماء والأفعال للأستاذ خليل البلوشي - الصف الخامس">
+  <style>
+    :root{
+      --bg:#0f172a;--panel:#111827;--ink:#e5e7eb;--muted:#9ca3af;--accent:#22c55e;--accent-2:#06b6d4;--danger:#ef4444;--warn:#f59e0b;
+      --card:#111827;--drop:#0b1220;
+    }
+    [data-theme="light"]{
+      --bg:#f8fafc;--panel:#ffffff;--ink:#0f172a;--muted:#475569;--accent:#16a34a;--accent-2:#0891b2;--danger:#dc2626;--warn:#d97706;
+      --card:#ffffff;--drop:#f1f5f9;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 "Dubai","Segoe UI",Tahoma,Arial,sans-serif}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),var(--panel);backdrop-filter:saturate(150%) blur(6px);z-index:5}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    h1{margin:0 0 8px;font-size:clamp(22px,4vw,32px)}
+    .subtitle{color:var(--muted);margin:0 0 8px}
+    .tools{display:flex;gap:8px;flex-wrap:wrap}
+    button,.btn{
+      cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--accent);color:white;font-weight:600
+    }
+    .ghost{background:transparent;color:var(--ink);border:1px solid #334155}
+    .alt{background:var(--accent-2)}
+    .warn{background:var(--warn)}
+    .danger{background:var(--danger)}
+    main{padding:18px}
+    section{background:var(--card);border:1px solid #1f2937;border-radius:14px;padding:18px;margin:14px 0}
+    .grid{display:grid;gap:14px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    details{background:var(--drop);border-radius:10px;padding:10px}
+    summary{cursor:pointer;font-weight:700}
+    .rule{background:rgba(34,197,94,.1);border:1px dashed var(--accent);padding:12px;border-radius:10px}
+    .note{color:var(--muted)}
+    .pill{display:inline-block;background:#0ea5e9; color:#fff;padding:.1rem .5rem;border-radius:999px;font-size:.8rem;margin-left:.3rem}
+    /* Drag & Drop */
+    .drag-wrap{display:grid;gap:12px}
+    .drag-bank,.drop-zone{min-height:64px;border:2px dashed #334155;border-radius:12px;padding:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;background:var(--drop)}
+    .chip{user-select:none;padding:8px 10px;border-radius:999px;background:#1f2937;color:#e5e7eb;border:1px solid #334155;cursor:grab}
+    .drop-title{font-weight:700;margin-bottom:6px}
+    .ok{outline:2px solid var(--accent)}
+    .bad{outline:2px solid var(--danger)}
+    .score{font-weight:700;color:var(--accent)}
+    .q{padding:10px;border:1px solid #334155;border-radius:10px}
+    .q h4{margin:0 0 6px}
+    .choices{display:grid;gap:8px}
+    .choices label{display:flex;gap:8px;align-items:center;background:var(--drop);padding:8px;border-radius:10px;border:1px solid #334155;cursor:pointer}
+    .flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .input{background:var(--drop);border:1px solid #334155;padding:10px;border-radius:10px;color:var(--ink);width:100%}
+    .kbd{background:#0b1220;border:1px solid #334155;border-radius:6px;padding:2px 6px;font-family:monospace;font-weight:700}
+    .result{padding:10px;border-radius:10px;background:rgba(6,182,212,.08);border:1px solid var(--accent-2)}
+    .badge{background:#334155;color:#e5e7eb;border-radius:8px;padding:2px 8px;font-size:.8rem;margin-inline-start:6px}
+    .footer-note{color:var(--muted);font-size:.9rem}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body data-theme="dark">
+  <header>
+    <div class="wrap">
+      <h1>درس تفاعلي: الألف في آخر الأسماء والأفعال <span class="pill">ا / ى</span></h1>
+      <p class="subtitle">إعداد: الأستاذ خليل البلوشي — الصف الخامس (40–45 دقيقة) • يتضمن شرحًا وتمارين فورية مع تصحيح ذاتي</p>
+      <div class="tools">
+        <button id="toggleTheme" class="ghost" aria-label="تبديل الوضع">تبديل الوضع الليلي/النهاري</button>
+        <button id="resetAll" class="warn" aria-label="إعادة ضبط الأنشطة">إعادة ضبط الأنشطة</button>
+        <button id="printBtn" class="alt" aria-label="طباعة التقرير">طباعة/حفظ التقرير</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- تمهيد -->
+    <section>
+      <h2>تمهيد قصير (دقيقة 2)</h2>
+      <p>انظر إلى الكلمات: <b>دعا</b>، <b>سعى</b>، <b>عصا</b>، <b>فتى</b>. نلاحظ أن بعضها ينتهي بـ <b>ا</b> وبعضها بـ <b>ى</b>. اليوم سنتعلم متى نكتب الألف <b>ممدودة (ا)</b> ومتى نكتبها <b>مقصورة (ى)</b> في آخر <u>الأسماء</u> و<u>الأفعال الثلاثية</u>.</p>
+      <details>
+        <summary>لماذا هذا مهم؟</summary>
+        <p class="note">التمييز الصحيح يجنّب الأخطاء الإملائية في الكتابة اليومية والاختبارات، ويساعد على نطقٍ ومعنى أدقّ.</p>
+      </details>
+    </section>
+
+    <!-- القاعدة -->
+    <section>
+      <h2>القاعدة المختصرة</h2>
+      <div class="grid cols-2">
+        <div class="rule">
+          <h3>أولًا: في <u>الأفعال الثلاثية</u> المنتهية بألف</h3>
+          <ol>
+            <li>إن كان مضارع الفعل ينتهي بـ <b>واو</b> (مثل: <b>يدعو</b>، <b>يسمو</b>، <b>يعفو</b>) فالألف في الماضي تُكتب <b>ممدودة (ا)</b>:
+              <span class="badge">دعا</span> <span class="badge">سما</span> <span class="badge">عفا</span>.
+            </li>
+            <li>إن كان مضارعه ينتهي بـ <b>ياء</b> (مثل: <b>يسعى</b>، <b>يقضي</b>، <b>يبني</b>) فالألف تُكتب <b>مقصورة (ى)</b>:
+              <span class="badge">سعى</span> <span class="badge">قضى</span> <span class="badge">بنى</span>.
+            </li>
+          </ol>
+          <p class="note">↳ طريقة تذكّر: <span class="kbd">المضارع</span> مفتاح الأصل (واو/ياء).</p>
+        </div>
+        <div class="rule">
+          <h3>ثانيًا: في <u>الأسماء</u> المنتهية بألف</h3>
+          <ol>
+            <li>نحوّل الاسم إلى <b>مثنّى</b>:
+              <ul>
+                <li>إن صار في التثنية <b>ـوان</b> → الأصل <b>واو</b> → نكتبها <b>ممدودة (ا)</b>: <span class="badge">عصا → عصوان</span>.</li>
+                <li>إن صار في التثنية <b>ـيان</b> → الأصل <b>ياء</b> → نكتبها <b>مقصورة (ى)</b>: <span class="badge">فتى → فتيان</span>، <span class="badge">هدى → هديان</span>.</li>
+              </ul>
+            </li>
+          </ol>
+          <p class="note">↳ توجد أسماء سماعية (مثل: <b>مصطفى</b>، <b>ليلى</b>) تُحفظ، ويكشف التثنية أصلها أيضًا: <span class="badge">مصطفيان</span>، <span class="badge">ليليان</span>.</p>
+        </div>
+      </div>
+      <details style="margin-top:10px">
+        <summary>أمثلة إضافية</summary>
+        <p><b>أفعال (ا):</b> نما ← ينمو، رجَا ← يرجو، علا ← يعلو. <br>
+           <b>أفعال (ى):</b> رمى ← يرمي، مضى ← يمضي، هدى ← يهدي. <br>
+           <b>أسماء (ا):</b> عصا (عصوان)، رحا* قد ترد سماعيًا بالوجهين حسب الاستعمال. <br>
+           <b>أسماء (ى):</b> فتى (فتيان)، رحى (رحيان)، سُرى (سريان). </p>
+      </details>
+    </section>
+
+    <!-- نشاط سحب وإفلات -->
+    <section>
+      <h2>النشاط 1: صنّف الكلمات (سحب وإفلات)</h2>
+      <p class="note">اسحب كل كلمة إلى الصندوق الصحيح.</p>
+      <div class="drag-wrap">
+        <div id="bank" class="drag-bank" aria-label="بنك الكلمات"></div>
+        <div class="grid cols-2">
+          <div>
+            <div class="drop-title">ألف ممدودة (ا)</div>
+            <div id="dropA" class="drop-zone" data-type="a" aria-label="منطقة إسقاط الألف الممدودة"></div>
+          </div>
+          <div>
+            <div class="drop-title">ألف مقصورة (ى)</div>
+            <div id="dropYa" class="drop-zone" data-type="ya" aria-label="منطقة إسقاط الألف المقصورة"></div>
+          </div>
+        </div>
+        <div class="flex">
+          <button class="btn" id="checkDrag">تحقّق</button>
+          <button class="ghost" id="resetDrag">إعادة</button>
+          <div>النتيجة: <span id="dragScore" class="score">0</span>/<span id="dragTotal">0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- اختيار من متعدد -->
+    <section>
+      <h2>النشاط 2: اختر نهاية الكلمة الصحيحة</h2>
+      <div id="mcqWrap" class="grid"></div>
+      <div class="flex" style="margin-top:8px">
+        <button class="btn" id="checkMcq">تحقّق</button>
+        <button class="ghost" id="resetMcq">إعادة</button>
+        <div>النتيجة: <span id="mcqScore" class="score">0</span>/<span id="mcqTotal">0</span></div>
+      </div>
+    </section>
+
+    <!-- اكتشاف الأصل بالمضارع -->
+    <section>
+      <h2>النشاط 3: اكتشف الأصل من المضارع</h2>
+      <p>اقرأ الفعل الماضي، واختر مضارعه الصحيح. إذا انتهى المضارع بـ <b>و</b> فالنتيجة (ا)، وإذا انتهى بـ <b>ي</b> فالنتيجة (ى).</p>
+      <div id="presentWrap" class="grid"></div>
+      <div class="flex" style="margin-top:8px">
+        <button class="btn" id="checkPresent">تحقّق</button>
+        <button class="ghost" id="resetPresent">إعادة</button>
+        <div>النتيجة: <span id="presentScore" class="score">0</span>/<span id="presentTotal">0</span></div>
+      </div>
+    </section>
+
+    <!-- التثنية للأسماء -->
+    <section>
+      <h2>النشاط 4: ثنِّ الاسم لتعرف نوع الألف</h2>
+      <p>اكتب التثنية الصحيحة للاسم المعطى (مثال: <span class="kbd">عصا → عصوان</span>، <span class="kbd">فتى → فتيان</span>).</p>
+      <div id="dualWrap" class="grid"></div>
+      <div class="flex" style="margin-top:8px">
+        <button class="btn" id="checkDual">تحقّق</button>
+        <button class="ghost" id="resetDual">إعادة</button>
+        <div>النتيجة: <span id="dualScore" class="score">0</span>/<span id="dualTotal">0</span></div>
+      </div>
+      <details style="margin-top:10px">
+        <summary>تلميح</summary>
+        <p class="note">إن ظهرت <b>وان</b> في التثنية فالأصل واو (ا)، وإن ظهرت <b>يان</b> فالأصل ياء (ى).</p>
+      </details>
+    </section>
+
+    <!-- تصويب إملائي -->
+    <section>
+      <h2>النشاط 5: تصويب إملائي سريع</h2>
+      <p>اكتب الكلمة بالشكل الصحيح (ا أو ى) اعتمادًا على القاعدة.</p>
+      <div id="dictWrap" class="grid"></div>
+      <div class="flex" style="margin-top:8px">
+        <button class="btn" id="checkDict">تحقّق</button>
+        <button class="ghost" id="resetDict">إعادة</button>
+        <div>النتيجة: <span id="dictScore" class="score">0</span>/<span id="dictTotal">0</span></div>
+      </div>
+    </section>
+
+    <!-- تقرير -->
+    <section>
+      <h2>التقرير الإجمالي</h2>
+      <div class="result" id="reportBox">
+        لم تبدأ الأنشطة بعد.
+      </div>
+      <div class="footer-note">عند الانتهاء اضغط <b>طباعة/حفظ التقرير</b> للاحتفاظ بالنتيجة.</div>
+    </section>
+
+    <section>
+      <h2>ملاحظات للمعلم</h2>
+      <ul>
+        <li>يمكنك إخفاء/إظهار أي قسم بحذف الوسم <span class="kbd">&lt;section&gt;</span> أو إضافة الصنف <span class="kbd">hidden</span>.</li>
+        <li>كل الأنشطة تُصحَّح ذاتيًا وتدخل في **التقرير** مع التفصيل.</li>
+        <li>الوضع الليلي/النهاري متاح من الأعلى.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // تبديل السمة
+    const root = document.body;
+    const toggleTheme = document.getElementById('toggleTheme');
+    toggleTheme.addEventListener('click', ()=>{
+      root.dataset.theme = root.dataset.theme==='dark' ? 'light' : 'dark';
+    });
+
+    const printBtn = document.getElementById('printBtn');
+    printBtn.addEventListener('click', ()=>window.print());
+
+    const state = {
+      drag:{correct:0,total:0,done:false},
+      mcq:{correct:0,total:0,done:false},
+      present:{correct:0,total:0,done:false},
+      dual:{correct:0,total:0,done:false},
+      dict:{correct:0,total:0,done:false},
+    };
+
+    function updateReport(){
+      const r = document.getElementById('reportBox');
+      const totals = ['drag','mcq','present','dual','dict'].map(k=>state[k]);
+      const sumC = totals.reduce((s,x)=>s+x.correct,0);
+      const sumT = totals.reduce((s,x)=>s+x.total,0);
+      const pct = sumT? Math.round((sumC/sumT)*100):0;
+      r.innerHTML = `
+        <div><b>الإجمالي:</b> ${sumC} / ${sumT} (<b>${pct}%</b>)</div>
+        <ul style="margin:.5rem 0;padding-inline-start:1rem">
+          <li>التصنيف (سحب وإفلات): ${state.drag.correct}/${state.drag.total}</li>
+          <li>اختيار النهاية: ${state.mcq.correct}/${state.mcq.total}</li>
+          <li>اكتشاف الأصل بالمضارع: ${state.present.correct}/${state.present.total}</li>
+          <li>التثنية للأسماء: ${state.dual.correct}/${state.dual.total}</li>
+          <li>التصويب الإملائي: ${state.dict.correct}/${state.dict.total}</li>
+        </ul>
+        <div class="note">نصيحة: استخدم المضارع للأفعال، والتثنية للأسماء لكشف الأصل.</div>
+      `;
+    }
+
+    /* ============ بيانات الدرس ============ */
+    // نشاط السحب: الكلمة ونوعها الصحيح
+    const dragData = [
+      {w:'دعا', t:'a'},{w:'سما', t:'a'},{w:'عفا', t:'a'},{w:'نما', t:'a'},{w:'رجا', t:'a'},{w:'علا', t:'a'},
+      {w:'سعى', t:'ya'},{w:'قضى', t:'ya'},{w:'رمى', t:'ya'},{w:'بنى', t:'ya'},{w:'هدى', t:'ya'},{w:'فتى', t:'ya'}
+    ];
+
+    // اختيار النهاية (فراغ + خيارات)
+    const mcqData = [
+      {stem:'دع_', correct:'ا', explain:'يدعو ← أصلها واو → ا'},
+      {stem:'سع_', correct:'ى', explain:'يسعى ← أصلها ياء → ى'},
+      {stem:'عل_', correct:'ا', explain:'يعلو ← أصلها واو → ا'},
+      {stem:'بن_', correct:'ى', explain:'يبني ← أصلها ياء → ى'},
+      {stem:'عص_', correct:'ا', explain:'عصا → في التثنية عصوان (واو) → ا'},
+      {stem:'فتح_', correct:'ى', explain:'فتى → في التثنية فتيان (ياء) → ى'}
+    ];
+
+    // اكتشاف الأصل بالمضارع
+    const presentData = [
+      {past:'دعا', choices:['يدعي','يدعو'], correct:1, explain:'انتهى المضارع بـ واو → ا'},
+      {past:'سعى', choices:['يسعى','يسعو'], correct:0, explain:'انتهى المضارع بـ ياء → ى'},
+      {past:'عفا', choices:['يعفو','يعفي'], correct:0, explain:'انتهى المضارع بـ واو → ا'},
+      {past:'قضى', choices:['يقضي','يقضو'], correct:0, explain:'انتهى المضارع بـ ياء → ى'},
+      {past:'سما', choices:['يسمو','يسمي'], correct:0, explain:'انتهى المضارع بـ واو → ا'}
+    ];
+
+    // التثنية للأسماء
+    const dualData = [
+      {noun:'عصا', expect:'عصوان', kind:'a'},
+      {noun:'فتى', expect:'فتيان', kind:'ya'},
+      {noun:'هدى', expect:'هديان', kind:'ya'},
+      {noun:'مصطفى', expect:'مصطفيان', kind:'ya'},
+      {noun:'ليلى', expect:'ليليان', kind:'ya'}
+    ];
+
+    // تصويب إملائي
+    const dictData = [
+      {hint:'(فعل) مضارعه يعفو', expect:'عفا'},
+      {hint:'(فعل) مضارعه يقضي', expect:'قضى'},
+      {hint:'(اسم) مثنّاه فتيان', expect:'فتى'},
+      {hint:'(فعل) مضارعه يبني', expect:'بنى'},
+      {hint:'(اسم) مثنّاه عصوان', expect:'عصا'},
+    ];
+
+    /* ============ نشاط السحب والإفلات ============ */
+    const bank = document.getElementById('bank');
+    const dropA = document.getElementById('dropA');
+    const dropYa = document.getElementById('dropYa');
+    const dragScore = document.getElementById('dragScore');
+    const dragTotal = document.getElementById('dragTotal');
+
+    function shuffle(a){ for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a }
+
+    function renderDrag(){
+      bank.innerHTML=''; dropA.innerHTML=''; dropYa.innerHTML='';
+      shuffle(dragData).forEach((d,i)=>{
+        const el=document.createElement('div');
+        el.className='chip'; el.draggable=true; el.textContent=d.w; el.dataset.t=d.t; el.id='chip'+i;
+        el.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',el.id)});
+        bank.appendChild(el);
+      });
+      [dropA,dropYa,bank].forEach(zone=>{
+        zone.addEventListener('dragover',e=>e.preventDefault());
+        zone.addEventListener('drop',e=>{
+          e.preventDefault();
+          const id=e.dataTransfer.getData('text/plain');
+          const node=document.getElementById(id);
+          if(node) zone.appendChild(node);
+        });
+      });
+      state.drag.total = dragData.length;
+      state.drag.correct = 0;
+      dragTotal.textContent = state.drag.total;
+      dragScore.textContent = '0';
+      state.drag.done=false;
+      updateReport();
+    }
+    renderDrag();
+
+    document.getElementById('checkDrag').addEventListener('click', ()=>{
+      let c=0;
+      [...dropA.children].forEach(ch=> ch.dataset.t==='a' ? (ch.classList.add('ok'),c++) : ch.classList.add('bad'));
+      [...dropYa.children].forEach(ch=> ch.dataset.t==='ya' ? (ch.classList.add('ok'),c++) : ch.classList.add('bad'));
+      state.drag.correct=c;
+      dragScore.textContent=c;
+      state.drag.done=true;
+      updateReport();
+      setTimeout(()=>{[...document.querySelectorAll('.chip')].forEach(ch=>ch.classList.remove('ok','bad'))},1200);
+    });
+    document.getElementById('resetDrag').addEventListener('click', renderDrag);
+
+    /* ============ اختيار من متعدد ============ */
+    const mcqWrap = document.getElementById('mcqWrap');
+    const mcqScore = document.getElementById('mcqScore');
+    const mcqTotal = document.getElementById('mcqTotal');
+
+    function renderMcq(){
+      mcqWrap.innerHTML='';
+      shuffle(mcqData).forEach((q,idx)=>{
+        const box=document.createElement('div'); box.className='q';
+        box.innerHTML=`
+          <h4>${q.stem}</h4>
+          <div class="choices">
+            <label><input type="radio" name="mcq${idx}" value="ا"> ا </label>
+            <label><input type="radio" name="mcq${idx}" value="ى"> ى </label>
+          </div>
+          <div class="note" id="mcqExp${idx}" style="display:none">${q.explain}</div>
+        `;
+        mcqWrap.appendChild(box);
+      });
+      state.mcq.total = mcqData.length;
+      state.mcq.correct=0;
+      mcqTotal.textContent=state.mcq.total;
+      mcqScore.textContent='0';
+      state.mcq.done=false;
+      updateReport();
+    }
+    renderMcq();
+
+    document.getElementById('checkMcq').addEventListener('click', ()=>{
+      let c=0;
+      [...mcqWrap.querySelectorAll('.q')].forEach((box,i)=>{
+        const chosen = box.querySelector('input[type="radio"]:checked');
+        const correct = mcqData[[...mcqWrap.children].indexOf(box)].correct;
+        const exp = box.querySelector('.note');
+        exp.style.display='block';
+        if(chosen && chosen.value===correct){ c++; box.style.borderColor='var(--accent)'; }
+        else { box.style.borderColor='var(--danger)'; }
+      });
+      state.mcq.correct=c;
+      mcqScore.textContent=c;
+      state.mcq.done=true;
+      updateReport();
+    });
+    document.getElementById('resetMcq').addEventListener('click', renderMcq);
+
+    /* ============ اكتشاف الأصل بالمضارع ============ */
+    const presentWrap = document.getElementById('presentWrap');
+    const presentScore = document.getElementById('presentScore');
+    const presentTotal = document.getElementById('presentTotal');
+
+    function renderPresent(){
+      presentWrap.innerHTML='';
+      shuffle(presentData).forEach((q,idx)=>{
+        const box=document.createElement('div'); box.className='q';
+        const opts = q.choices.map((c,i)=>`
+          <label><input type="radio" name="pr${idx}" value="${i}"> ${c}</label>`).join('');
+        box.innerHTML=`
+          <h4>الماضي: <b>${q.past}</b></h4>
+          <div class="choices">${opts}</div>
+          <div class="note" style="display:none">${q.explain}</div>
+        `;
+        presentWrap.appendChild(box);
+      });
+      state.present.total=presentData.length;
+      state.present.correct=0;
+      presentTotal.textContent=state.present.total;
+      presentScore.textContent='0';
+      state.present.done=false;
+      updateReport();
+    }
+    renderPresent();
+
+    document.getElementById('checkPresent').addEventListener('click', ()=>{
+      let c=0;
+      [...presentWrap.querySelectorAll('.q')].forEach((box,i)=>{
+        const chosen = box.querySelector('input[type="radio"]:checked');
+        const idx=[...presentWrap.children].indexOf(box);
+        const correct = presentData[idx].correct.toString();
+        const exp = box.querySelector('.note');
+        exp.style.display='block';
+        if(chosen && chosen.value===correct){ c++; box.style.borderColor='var(--accent)'; }
+        else { box.style.borderColor='var(--danger)'; }
+      });
+      state.present.correct=c;
+      presentScore.textContent=c;
+      state.present.done=true;
+      updateReport();
+    });
+    document.getElementById('resetPresent').addEventListener('click', renderPresent);
+
+    /* ============ التثنية للأسماء ============ */
+    const dualWrap = document.getElementById('dualWrap');
+    const dualScore = document.getElementById('dualScore');
+    const dualTotal = document.getElementById('dualTotal');
+
+    function renderDual(){
+      dualWrap.innerHTML='';
+      shuffle(dualData).forEach((q,i)=>{
+        const box=document.createElement('div'); box.className='q';
+        box.innerHTML=`
+          <h4>ثنِّ الاسم: <b>${q.noun}</b></h4>
+          <input class="input" type="text" placeholder="اكتب التثنية هنا" aria-label="إجابة التثنية">
+          <div class="note" style="display:none">الإجابة النموذجية: ${q.expect}</div>
+        `;
+        dualWrap.appendChild(box);
+      });
+      state.dual.total=dualData.length;
+      state.dual.correct=0;
+      dualTotal.textContent=state.dual.total;
+      dualScore.textContent='0';
+      state.dual.done=false;
+      updateReport();
+    }
+    renderDual();
+
+    document.getElementById('checkDual').addEventListener('click', ()=>{
+      let c=0;
+      [...dualWrap.querySelectorAll('.q')].forEach((box,i)=>{
+        const input = box.querySelector('input');
+        const expect = dualData[[...dualWrap.children].indexOf(box)].expect;
+        const exp = box.querySelector('.note');
+        exp.style.display='block';
+        if(input.value.trim() === expect){ c++; box.style.borderColor='var(--accent)'; }
+        else { box.style.borderColor='var(--danger)'; }
+      });
+      state.dual.correct=c;
+      dualScore.textContent=c;
+      state.dual.done=true;
+      updateReport();
+    });
+    document.getElementById('resetDual').addEventListener('click', renderDual);
+
+    /* ============ التصويب الإملائي ============ */
+    const dictWrap = document.getElementById('dictWrap');
+    const dictScore = document.getElementById('dictScore');
+    const dictTotal = document.getElementById('dictTotal');
+
+    function normalizeArabic(s){
+      return s.replace(/\s+/g,'').replace(/ي/g,'ي').replace(/ى/g,'ى').replace(/ا/g,'ا');
+    }
+
+    function renderDict(){
+      dictWrap.innerHTML='';
+      shuffle(dictData).forEach((q,i)=>{
+        const box=document.createElement('div'); box.className='q';
+        box.innerHTML=`
+          <h4>${q.hint}</h4>
+          <input class="input" type="text" placeholder="اكتب الكلمة الصحيحة (ا/ى)">
+          <div class="note" style="display:none">الإجابة: ${q.expect}</div>
+        `;
+        dictWrap.appendChild(box);
+      });
+      state.dict.total=dictData.length;
+      state.dict.correct=0;
+      dictTotal.textContent=state.dict.total;
+      dictScore.textContent='0';
+      state.dict.done=false;
+      updateReport();
+    }
+    renderDict();
+
+    document.getElementById('checkDict').addEventListener('click', ()=>{
+      let c=0;
+      [...dictWrap.querySelectorAll('.q')].forEach((box,i)=>{
+        const input = box.querySelector('input');
+        const expect = dictData[[...dictWrap.children].indexOf(box)].expect;
+        const exp = box.querySelector('.note');
+        exp.style.display='block';
+        if(normalizeArabic(input.value)===normalizeArabic(expect)){
+          c++; box.style.borderColor='var(--accent)';
+        } else { box.style.borderColor='var(--danger)'; }
+      });
+      state.dict.correct=c;
+      dictScore.textContent=c;
+      state.dict.done=true;
+      updateReport();
+    });
+    document.getElementById('resetDict').addEventListener('click', renderDict);
+
+    // إعادة ضبط الكل
+    document.getElementById('resetAll').addEventListener('click', ()=>{
+      renderDrag(); renderMcq(); renderPresent(); renderDual(); renderDict();
+    });
+
+    // أول تقرير
+    updateReport();
+  </script>
+</body>
+</html>
+``
