@@ -2,158 +2,263 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>منهج سلطنة عمان - الألف في آخر الأفعال</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس التفاعلي: الألف في آخر الأفعال</title>
     <style>
-        :root { --primary: #1a5f7a; --secondary: #2a9d8f; --accent: #e76f51; --light: #f4f9f9; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #fafafa; padding: 20px; color: #2c3e50; }
-        .container { max-width: 900px; margin: auto; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
-        header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid var(--secondary); }
-        .content-section { padding: 30px; border-bottom: 1px solid #eee; }
-        .rule-card { background: var(--light); border-right: 5px solid var(--secondary); padding: 20px; margin: 15px 0; border-radius: 8px; }
-        .highlight { color: var(--accent); font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
-        th { background: var(--secondary); color: white; }
-        .exercise-box { background: #fff; border: 2px solid var(--primary); border-radius: 12px; padding: 20px; margin-top: 20px; }
-        .btn { background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: var(--secondary); }
-        .feedback { margin-top: 15px; padding: 10px; border-radius: 5px; display: none; }
-        .correct { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .wrong { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .nav-tabs { display: flex; background: #eee; }
-        .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .tab.active { background: white; border-top: 3px solid var(--accent); color: var(--accent); }
+        :root {
+            --main-color: #1a5f7a;
+            --secondary-color: #2a9d8f;
+            --accent-color: #e76f51;
+            --bg-color: #f8fbfd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        h1 { color: var(--main-color); margin-bottom: 10px; }
+        h2 { color: var(--secondary-color); font-size: 1.5rem; }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #eef2f5;
+        }
+
+        .rule-box {
+            background-color: #f0f9f7;
+            border-right: 6px solid var(--secondary-color);
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .highlight { color: var(--accent-color); font-weight: bold; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th { background: var(--main-color); color: white; }
+
+        /* التمارين */
+        .exercise-card {
+            background: #fff;
+            border: 2px solid #eef2f5;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .exercise-card:hover { border-color: var(--secondary-color); }
+
+        .options-group {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-option {
+            background: #f1f1f1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn-option.selected {
+            background: var(--main-color);
+            color: white;
+        }
+
+        .check-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .correct { background: #d4edda; color: #155724; }
+        .incorrect { background: #f8d7da; color: #721c24; }
+
+        .footer-info {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>مهاراتي في الكتابة - الصف الخامس</h1>
+        <h1>المحور الخامس: رياضتي وصحتي</h1>
         <h2>الأنشطة الإملائية: الألف في آخر الأفعال</h2>
-        <p>المحور الخامس: رياضتي وصحتي</p>
     </header>
 
-    <div class="nav-tabs">
-        <div class="tab active" onclick="showTab('rules')">القواعد التعليمية</div>
-        <div class="tab" onclick="showTab('exercises')">التدريبات التفاعلية</div>
-    </div>
-
-    <div id="rules" class="content-section">
-        <h3>أولاً: الأفعال الثلاثية (أصل الألف)</h3>
-        <p>لمعرفة شكل الألف المتطرفة في الفعل الثلاثي، نردّه إلى مضارعه:</p>
+    <div class="section">
+        <h3>1. الأفعال الثلاثية (حسب كتاب الطالب ص 46)</h3>
+        <p>لمعرفة شكل الألف، نرد الفعل الماضي إلى <span class="highlight">المضارع</span>:</p>
         <table>
-            <thead>
-                <tr>
-                    <th>الفعل الماضي</th>
-                    <th>المضارع</th>
-                    <th>أصل الألف</th>
-                    <th>تُكتب الألف...</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>سما / دنا</td>
-                    <td>يسـ<span class="highlight">و</span> / يدنـ<span class="highlight">و</span></td>
-                    <td>واو</td>
-                    <td>ممدودة (ا)</td>
-                </tr>
-                <tr>
-                    <td>رمى / قضى</td>
-                    <td>يرمـ<span class="highlight">ي</span> / يقضـ<span class="highlight">ي</span></td>
-                    <td>ياء</td>
-                    <td>مقصورة (ى)</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>الماضي</th>
+                <th>المضارع</th>
+                <th>أصل الألف</th>
+                <th>شكل الكتابة</th>
+            </tr>
+            <tr>
+                <td>دعا / سما</td>
+                <td>يدعـ<span class="highlight">و</span> / يسمـ<span class="highlight">و</span></td>
+                <td>واو</td>
+                <td>ألف ممدودة (ا)</td>
+            </tr>
+            <tr>
+                <td>رمى / قضى</td>
+                <td>يرمـ<span class="highlight">ي</span> / يقضـ<span class="highlight">ي</span></td>
+                <td>ياء</td>
+                <td>ألف مقصورة (ى)</td>
+            </tr>
         </table>
-
-        <h3 style="margin-top:30px;">ثانياً: الأفعال غير الثلاثية (الزائدة عن 3 أحرف)</h3>
-        <div class="rule-card">
-            <p>1. الأصل في الأفعال غير الثلاثية أن تُكتب ألفها <span class="highlight">مقصورة (ى)</span>، مثال: <strong>(صلى، استلقى، أعطى)</strong>.</p>
-            <p>2. حالة استثنائية: إذا سبقت الألف بـ <strong>(ياء)</strong> تُكتب <span class="highlight">ممدودة (ا)</span>، مثال: <strong>(أحيا، تزيّا)</strong>.</p>
+        <div class="rule-box">
+            <strong>قاعدة ذهبية:</strong> إذا انتهى المضارع بـ (واو) اكتبها (ا)، وإذا انتهى بـ (ياء) اكتبها (ى).
         </div>
     </div>
 
-    <div id="exercises" class="content-section" style="display:none;">
-        <div class="exercise-box" id="q1">
-            <h4>التمرين 1 (تصنيف الأفعال):</h4>
-            <p>اختر الفعل المكتوب بشكل صحيح إملائياً:</p>
-            <div style="margin: 15px 0;">
-                <input type="radio" name="opt1" value="wrong"> بنى (لأن أصلها واو)<br>
-                <input type="radio" name="opt1" value="correct"> بنى (لأن أصلها ياء "يبني") <br>
-                <input type="radio" name="opt1" value="wrong"> بنا
+    <div class="section">
+        <h3>2. الأفعال غير الثلاثية (أكثر من 3 أحرف)</h3>
+        <p>تعتمد الكتابة هنا على الحرف الذي يسبق الألف مباشرة:</p>
+        <div class="rule-box">
+            <ul>
+                <li>تُكتب <strong>مقصورة (ى)</strong> في أغلب الحالات، مثل: <span class="highlight">صلى، استلقى، غطى</span>.</li>
+                <li>تُكتب <strong>ممدودة (ا)</strong> إذا سُبقت بـ <span class="highlight">ياء</span>، مثل: <span class="highlight">أحيا، تزيّا، استحيا</span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 style="color: var(--accent-color);">تطبيقات تفاعلية (من وحي الكتاب والدليل)</h3>
+
+        <div class="exercise-card" id="ex1">
+            <p><strong>س1:</strong> ما هو الرسم الصحيح للفعل الذي مضارعه <span class="highlight">"يشدو"</span>؟</p>
+            <div class="options-group">
+                <button class="btn-option" onclick="select(this, 'ex1')">شدى</button>
+                <button class="btn-option" onclick="select(this, 'ex1')" data-correct="true">شدا</button>
             </div>
-            <button class="btn" onclick="check('q1', 'correct')">تحقق من الإجابة</button>
+            <button class="check-btn" onclick="checkAnswer('ex1')">تحقق</button>
             <div class="feedback"></div>
         </div>
 
-        <div class="exercise-box" id="q2">
-            <h4>التمرين 2 (الأفعال غير الثلاثية):</h4>
-            <p>لماذا كتبت الألف ممدودة في فعل "أحيا"؟</p>
-            <div style="margin: 15px 0;">
-                <input type="radio" name="opt2" value="wrong"> لأنه فعل ثلاثي<br>
-                <input type="radio" name="opt2" value="correct"> لأنه فعل غير ثلاثي سُبقت ألفه بياء <br>
-                <input type="radio" name="opt2" value="wrong"> لأن أصل الألف واو
+        <div class="exercise-card" id="ex2">
+            <p><strong>س2:</strong> "الطالبُ <span class="highlight">......</span> بماله في أعمال الخير" (أكمل بفعل ثلاثي أصله واو)</p>
+            <div class="options-group">
+                <button class="btn-option" onclick="select(this, 'ex2')" data-correct="true">سما</button>
+                <button class="btn-option" onclick="select(this, 'ex2')">سمى</button>
             </div>
-            <button class="btn" onclick="check('q2', 'correct')">تحقق من الإجابة</button>
+            <button class="check-btn" onclick="checkAnswer('ex2')">تحقق</button>
             <div class="feedback"></div>
         </div>
 
-        <div class="exercise-box" id="q3">
-            <h4>التمرين 3 (التحويل للمضارع):</h4>
-            <p>ما هو الرسم الصحيح للفعل الماضي من (يعدو)؟</p>
-            <div style="margin: 15px 0;">
-                <button class="btn" style="background:#666" onclick="setAns('q3','عدى')">عدى</button>
-                <button class="btn" style="background:#666" onclick="setAns('q3','عدا')">عدا</button>
+        <div class="exercise-card" id="ex3">
+            <p><strong>س3:</strong> الفعل <span class="highlight">"استلقى"</span> كُتب بألف مقصورة لأنه:</p>
+            <div class="options-group">
+                <button class="btn-option" onclick="select(this, 'ex3')">أصله ياء في المضارع</button>
+                <button class="btn-option" onclick="select(this, 'ex3')" data-correct="true">فعل غير ثلاثي لم يسبق بياء</button>
             </div>
-            <p id="q3_ans" style="font-weight:bold;"></p>
-            <button class="btn" onclick="checkQ3()">تأكيد الاختيار</button>
+            <button class="check-btn" onclick="checkAnswer('ex3')">تحقق</button>
             <div class="feedback"></div>
         </div>
+
+        <div class="exercise-card" id="ex4">
+            <p><strong>س4:</strong> أي من الأفعال التالية كُتب بشكل <span class="highlight">خاطئ</span>؟</p>
+            <div class="options-group">
+                <button class="btn-option" onclick="select(this, 'ex4')">استحيا</button>
+                <button class="btn-option" onclick="select(this, 'ex4')" data-correct="true">أحيى</button>
+                <button class="btn-option" onclick="select(this, 'ex4')">غطى</button>
+            </div>
+            <button class="check-btn" onclick="checkAnswer('ex4')">تحقق</button>
+            <div class="feedback"></div>
+        </div>
+    </div>
+
+    <div class="footer-info">
+        تم إعداد هذا الدرس بناءً على منهج سلطنة عمان - مهاراتي في الكتابة (الصف الخامس)
     </div>
 </div>
 
 <script>
-    function showTab(tabId) {
-        document.getElementById('rules').style.display = tabId === 'rules' ? 'block' : 'none';
-        document.getElementById('exercises').style.display = tabId === 'exercises' ? 'block' : 'none';
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        event.target.classList.add('active');
+    function select(element, exId) {
+        const parent = document.getElementById(exId);
+        const options = parent.querySelectorAll('.btn-option');
+        options.forEach(opt => opt.classList.remove('selected'));
+        element.classList.add('selected');
     }
 
-    function check(id, correctVal) {
-        const box = document.getElementById(id);
-        const selected = box.querySelector('input:checked');
-        const feedback = box.querySelector('.feedback');
-        
-        feedback.style.display = 'block';
-        if(selected && selected.value === correctVal) {
-            feedback.innerHTML = "أحسنت! إجابة صحيحة متوافقة مع قاعدة الكتاب المدرسي.";
-            feedback.className = "feedback correct";
-        } else {
-            feedback.innerHTML = "حاول مرة أخرى! تذكر: نرد الفعل للمضارع لمعرفة أصل الألف.";
-            feedback.className = "feedback wrong";
+    function checkAnswer(exId) {
+        const parent = document.getElementById(exId);
+        const selected = parent.querySelector('.btn-option.selected');
+        const feedback = parent.querySelector('.feedback');
+
+        if (!selected) {
+            alert("يرجى اختيار إجابة أولاً!");
+            return;
         }
-    }
 
-    let q3Selection = "";
-    function setAns(id, val) {
-        q3Selection = val;
-        document.getElementById('q3_ans').innerText = "اختيارك: " + val;
-    }
-
-    function checkQ3() {
-        const feedback = document.querySelector('#q3 .feedback');
-        feedback.style.display = 'block';
-        if(q3Selection === 'عدا') {
-            feedback.innerHTML = "صحيح! بما أن المضارع ينتهي بواو (يعدو)، تُكتب الألف ممدودة (عدا).";
+        feedback.style.display = "block";
+        if (selected.hasAttribute('data-correct')) {
             feedback.className = "feedback correct";
+            feedback.innerHTML = "✓ إجابة صحيحة! أحسنت في تطبيق القاعدة.";
         } else {
-            feedback.innerHTML = "خطأ. بما أن الواو هي الأصل، يجب أن تُكتب الألف ممدودة.";
-            feedback.className = "feedback wrong";
+            feedback.className = "feedback incorrect";
+            feedback.innerHTML = "✗ إجابة غير دقيقة. فكر في أصل الفعل أو عدد حروفه.";
         }
     }
 </script>
-
 </body>
 </html>
