@@ -1,902 +1,292 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>درس تفاعلي: الألف في آخر الأسماء والأفعال (ا / ى)</title>
-  <meta name="description" content="درس تفاعلي للألف في آخر الأسماء والأفعال للأستاذ خليل البلوشي - الصف الخامس">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --ink: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #22c55e;
-      --accent-2: #06b6d4;
-      --danger: #ef4444;
-      --warn: #f59e0b;
-      --card: #111827;
-      --drop: #0b1220;
-      --border-radius: 10px;
-      --transition: all 0.2s ease;
-      --font-main: 'Baloo Bhaijaan 2', 'Dubai', 'Segoe UI', Tahoma, Arial, sans-serif;
-    }
-
-    [data-theme="light"] {
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --ink: #0f172a;
-      --muted: #475569;
-      --accent: #16a34a;
-      --accent-2: #0891b2;
-      --danger: #dc2626;
-      --warn: #d97706;
-      --card: #ffffff;
-      --drop: #f1f5f9;
-    }
-
-    * {
-      box-sizing: border-box;
-      transition: var(--transition);
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font: 16px/1.8 var(--font-main);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent), var(--panel);
-      backdrop-filter: saturate(150%) blur(6px);
-      z-index: 5;
-      padding: 12px 0;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: auto;
-      padding: 16px;
-    }
-
-    h1, h2, h3, h4 {
-      margin: 0 0 8px;
-      font-weight: 700;
-      font-family: var(--font-main);
-    }
-
-    h1 {
-      font-size: clamp(22px, 4vw, 32px);
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin: 0 0 12px;
-      font-family: var(--font-main);
-    }
-
-    .tools {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    button, .btn {
-      cursor: pointer;
-      border: 0;
-      border-radius: var(--border-radius);
-      padding: 10px 14px;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      font-family: var(--font-main);
-      transition: var(--transition);
-    }
-
-    button:hover, .btn:hover {
-      opacity: 0.9;
-    }
-
-    .ghost {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid #334155;
-    }
-
-    .alt {
-      background: var(--accent-2);
-    }
-
-    .warn {
-      background: var(--warn);
-    }
-
-    .danger {
-      background: var(--danger);
-    }
-
-    main {
-      padding: 18px 0;
-    }
-
-    section {
-      background: var(--card);
-      border: 1px solid #1f2937;
-      border-radius: var(--border-radius);
-      padding: 18px;
-      margin: 14px 0;
-    }
-
-    .grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    @media (min-width: 900px) {
-      .grid.cols-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    details {
-      background: var(--drop);
-      border-radius: var(--border-radius);
-      padding: 10px;
-      margin: 10px 0;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 700;
-      font-family: var(--font-main);
-    }
-
-    .rule {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px dashed var(--accent);
-      padding: 12px;
-      border-radius: var(--border-radius);
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-family: var(--font-main);
-    }
-
-    .pill {
-      display: inline-block;
-      background: #0ea5e9;
-      color: #fff;
-      padding: 0.1rem 0.5rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      margin-left: 0.3rem;
-      font-family: var(--font-main);
-    }
-
-    /* تحسين عناصر السحب والإفلات */
-    .drag-wrap {
-      display: grid;
-      gap: 12px;
-    }
-
-    .drag-bank, .drop-zone {
-      min-height: 64px;
-      border: 2px dashed #334155;
-      border-radius: var(--border-radius);
-      padding: 10px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      background: var(--drop);
-    }
-
-    .chip {
-      user-select: none;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: #1f2937;
-      color: #e5e7eb;
-      border: 1px solid #334155;
-      cursor: grab;
-      transition: var(--transition);
-      font-family: var(--font-main);
-    }
-
-    .chip:hover {
-      transform: scale(1.02);
-    }
-
-    .drop-title {
-      font-weight: 700;
-      margin-bottom: 6px;
-      font-family: var(--font-main);
-    }
-
-    .ok {
-      outline: 2px solid var(--accent);
-    }
-
-    .bad {
-      outline: 2px solid var(--danger);
-    }
-
-    .score {
-      font-weight: 700;
-      color: var(--accent);
-      font-family: var(--font-main);
-    }
-
-    .q {
-      padding: 10px;
-      border: 1px solid #334155;
-      border-radius: var(--border-radius);
-    }
-
-    .q h4 {
-      margin: 0 0 6px;
-      font-family: var(--font-main);
-    }
-
-    .choices {
-      display: grid;
-      gap: 8px;
-    }
-
-    .choices label {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      background: var(--drop);
-      padding: 8px;
-      border-radius: var(--border-radius);
-      border: 1px solid #334155;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: var(--font-main);
-    }
-
-    .choices label:hover {
-      background: rgba(6, 182, 212, 0.1);
-    }
-
-    .flex {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .input {
-      background: var(--drop);
-      border: 1px solid #334155;
-      padding: 10px;
-      border-radius: var(--border-radius);
-      color: var(--ink);
-      width: 100%;
-      font-family: var(--font-main);
-    }
-
-    .kbd {
-      background: #0b1220;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      padding: 2px 6px;
-      font-family: monospace;
-      font-weight: 700;
-    }
-
-    .result {
-      padding: 10px;
-      border-radius: var(--border-radius);
-      background: rgba(6, 182, 212, 0.08);
-      border: 1px solid var(--accent-2);
-      font-family: var(--font-main);
-    }
-
-    .badge {
-      background: #334155;
-      color: #e5e7eb;
-      border-radius: 8px;
-      padding: 2px 8px;
-      font-size: 0.8rem;
-      margin-inline-start: 6px;
-      font-family: var(--font-main);
-    }
-
-    .footer-note {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 10px;
-      font-family: var(--font-main);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* تحسين الوصولية */
-    [aria-hidden="true"] {
-      display: none;
-    }
-
-    [aria-live] {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس تفاعلي: الألف في آخر الأسماء والأفعال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Baloo Bhaijaan 2', sans-serif;
+            direction: rtl;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Baloo Bhaijaan 2', sans-serif;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .exercise {
+            background-color: #e8f4fc;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
-<body data-theme="dark">
-  <header>
-    <div class="wrap">
-      <h1>درس تفاعلي: الألف في آخر الأسماء والأفعال <span class="pill">ا / ى</span></h1>
-      <p class="subtitle">إعداد: الأستاذ خليل البلوشي — الصف الخامس (40–45 دقيقة) • يتضمن شرحًا وتمارين فورية مع تصحيح ذاتي</p>
-      <div class="tools">
-        <button id="toggleTheme" class="ghost" aria-label="تبديل الوضع">تبديل الوضع الليلي/النهاري</button>
-        <button id="resetAll" class="warn" aria-label="إعادة ضبط الأنشطة">إعادة ضبط الأنشطة</button>
-        <button id="printBtn" class="alt" aria-label="طباعة التقرير">طباعة/حفظ التقرير</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- تمهيد -->
-    <section>
-      <h2>تمهيد قصير (دقيقة 2)</h2>
-      <p>انظر إلى الكلمات: <b>دعا</b>، <b>سعى</b>، <b>عصا</b>، <b>فتى</b>. نلاحظ أن بعضها ينتهي بـ <b>ا</b> وبعضها بـ <b>ى</b>. اليوم سنتعلم متى نكتب الألف <b>ممدودة (ا)</b> ومتى نكتبها <b>مقصورة (ى)</b> في آخر <u>الأسماء</u> و<u>الأفعال الثلاثية</u>.</p>
-      <details>
-        <summary>لماذا هذا مهم؟</summary>
-        <p class="note">التمييز الصحيح يجنب الأخطاء الإملائية في الكتابة اليومية والاختبارات، ويساعد على نطق ومعنى أدق.</p>
-      </details>
-    </section>
-
-    <!-- القاعدة -->
-    <section>
-      <h2>القاعدة المختصرة</h2>
-      <div class="grid cols-2">
-        <div class="rule">
-          <h3>أولًا: في <u>الأفعال الثلاثية</u> المنتهية بألف</h3>
-          <ol>
-            <li>إن كان مضارع الفعل ينتهي بـ <b>واو</b> (مثل: <b>يدعو</b>، <b>يسمو</b>، <b>يعفو</b>) فالألف في الماضي تُكتب <b>ممدودة (ا)</b>:
-              <span class="badge">دعا</span> <span class="badge">سما</span> <span class="badge">عفا</span>.
-            </li>
-            <li>إن كان مضارعه ينتهي بـ <b>ياء</b> (مثل: <b>يسعى</b>، <b>يقضي</b>، <b>يبني</b>) فالألف تُكتب <b>مقصورة (ى)</b>:
-              <span class="badge">سعى</span> <span class="badge">قضى</span> <span class="badge">بنى</span>.
-            </li>
-          </ol>
-          <p class="note">↳ طريقة تذكّر: <span class="kbd">المضارع</span> مفتاح الأصل (واو/ياء).</p>
-        </div>
-        <div class="rule">
-          <h3>ثانيًا: في <u>الأسماء</u> المنتهية بألف</h3>
-          <ol>
-            <li>نحوّل الاسم إلى <b>مثنّى</b>:
-              <ul>
-                <li>إن صار في التثنية <b>ـوان</b> → الأصل <b>واو</b> → نكتبها <b>ممدودة (ا)</b>: <span class="badge">عصا → عصوان</span>.</li>
-                <li>إن صار في التثنية <b>ـيان</b> → الأصل <b>ياء</b> → نكتبها <b>مقصورة (ى)</b>: <span class="badge">فتى → فتيان</span>، <span class="badge">هدى → هديان</span>.</li>
-              </ul>
-            </li>
-          </ol>
-          <p class="note">↳ توجد أسماء سماعية (مثل: <b>مصطفى</b>، <b>ليلى</b>) تُحفظ، ويكشف التثنية أصلها أيضًا: <span class="badge">مصطفيان</span>، <span class="badge">ليليان</span>.</p>
-        </div>
-      </div>
-      <details style="margin-top:10px">
-        <summary>أمثلة إضافية</summary>
-        <p><b>أفعال (ا):</b> نما ← ينمو، رجَا ← يرجو، علا ← يعلو. <br>
-           <b>أفعال (ى):</b> رمى ← يرمي، مضى ← يمضي، هدى ← يهدي. <br>
-           <b>أسماء (ا):</b> عصا (عصوان)، رحا* قد ترد سماعيًا بالوجهين حسب الاستعمال. <br>
-           <b>أسماء (ى):</b> فتى (فتيان)، رحى (رحيان)، سُرى (سريان). </p>
-      </details>
-    </section>
-
-    <!-- نشاط سحب وإفلات -->
-    <section>
-      <h2>النشاط 1: صنّف الكلمات (سحب وإفلات)</h2>
-      <p class="note">اسحب كل كلمة إلى الصندوق الصحيح.</p>
-      <div class="drag-wrap">
-        <div id="bank" class="drag-bank" aria-label="بنك الكلمات"></div>
-        <div class="grid cols-2">
-          <div>
-            <div class="drop-title">ألف ممدودة (ا)</div>
-            <div id="dropA" class="drop-zone" data-type="a" aria-label="منطقة إسقاط الألف الممدودة"></div>
-          </div>
-          <div>
-            <div class="drop-title">ألف مقصورة (ى)</div>
-            <div id="dropYa" class="drop-zone" data-type="ya" aria-label="منطقة إسقاط الألف المقصورة"></div>
-          </div>
-        </div>
-        <div class="flex">
-          <button class="btn" id="checkDrag">تحقّق</button>
-          <button class="ghost" id="resetDrag">إعادة</button>
-          <div>النتيجة: <span id="dragScore" class="score">0</span>/<span id="dragTotal">0</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- اختيار من متعدد -->
-    <section>
-      <h2>النشاط 2: اختر نهاية الكلمة الصحيحة</h2>
-      <div id="mcqWrap" class="grid"></div>
-      <div class="flex" style="margin-top:8px">
-        <button class="btn" id="checkMcq">تحقّق</button>
-        <button class="ghost" id="resetMcq">إعادة</button>
-        <div>النتيجة: <span id="mcqScore" class="score">0</span>/<span id="mcqTotal">0</span></div>
-      </div>
-    </section>
-
-    <!-- اكتشاف الأصل بالمضارع -->
-    <section>
-      <h2>النشاط 3: اكتشف الأصل من المضارع</h2>
-      <p>اقرأ الفعل الماضي، واختر مضارعه الصحيح. إذا انتهى المضارع بـ <b>و</b> فالنتيجة (ا)، وإذا انتهى بـ <b>ي</b> فالنتيجة (ى).</p>
-      <div id="presentWrap" class="grid"></div>
-      <div class="flex" style="margin-top:8px">
-        <button class="btn" id="checkPresent">تحقّق</button>
-        <button class="ghost" id="resetPresent">إعادة</button>
-        <div>النتيجة: <span id="presentScore" class="score">0</span>/<span id="presentTotal">0</span></div>
-      </div>
-    </section>
-
-    <!-- التثنية للأسماء -->
-    <section>
-      <h2>النشاط 4: ثنِّ الاسم لتعرف نوع الألف</h2>
-      <p>اكتب التثنية الصحيحة للاسم المعطى (مثال: <span class="kbd">عصا → عصوان</span>، <span class="kbd">فتى → فتيان</span>).</p>
-      <div id="dualWrap" class="grid"></div>
-      <div class="flex" style="margin-top:8px">
-        <button class="btn" id="checkDual">تحقّق</button>
-        <button class="ghost" id="resetDual">إعادة</button>
-        <div>النتيجة: <span id="dualScore" class="score">0</span>/<span id="dualTotal">0</span></div>
-      </div>
-      <details style="margin-top:10px">
-        <summary>تلميح</summary>
-        <p class="note">إن ظهرت <b>وان</b> في التثنية فالأصل واو (ا)، وإن ظهرت <b>يان</b> فالأصل ياء (ى).</p>
-      </details>
-    </section>
-
-    <!-- تصويب إملائي -->
-    <section>
-      <h2>النشاط 5: تصويب إملائي سريع</h2>
-      <p>اكتب الكلمة بالشكل الصحيح (ا أو ى) اعتمادًا على القاعدة.</p>
-      <div id="dictWrap" class="grid"></div>
-      <div class="flex" style="margin-top:8px">
-        <button class="btn" id="checkDict">تحقّق</button>
-        <button class="ghost" id="resetDict">إعادة</button>
-        <div>النتيجة: <span id="dictScore" class="score">0</span>/<span id="dictTotal">0</span></div>
-      </div>
-    </section>
-
-    <!-- تقرير -->
-    <section>
-      <h2>التقرير الإجمالي</h2>
-      <div class="result" id="reportBox">
-        لم تبدأ الأنشطة بعد.
-      </div>
-      <div class="footer-note">عند الانتهاء اضغط <b>طباعة/حفظ التقرير</b> للاحتفاظ بالنتيجة.</div>
-    </section>
-
-    <section>
-      <h2>ملاحظات للمعلم</h2>
-      <ul>
-        <li>يمكنك إخفاء/إظهار أي قسم بحذف الوسم <span class="kbd">&lt;section&gt;</span> أو إضافة الصنف <span class="kbd">hidden</span>.</li>
-        <li>كل الأنشطة تُصحَّح ذاتيًا وتدخل في **التقرير** مع التفصيل.</li>
-        <li>الوضع الليلي/النهاري متاح من الأعلى.</li>
-      </ul>
-    </section>
-  </main>
-
-  <script>
-    // تبديل السمة
-    const root = document.body;
-    const toggleTheme = document.getElementById('toggleTheme');
-    toggleTheme.addEventListener('click', () => {
-      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    });
-
-    const printBtn = document.getElementById('printBtn');
-    printBtn.addEventListener('click', () => window.print());
-
-    // حالة الأنشطة
-    const state = {
-      drag: { correct: 0, total: 0, done: false },
-      mcq: { correct: 0, total: 0, done: false },
-      present: { correct: 0, total: 0, done: false },
-      dual: { correct: 0, total: 0, done: false },
-      dict: { correct: 0, total: 0, done: false },
-    };
-
-    // تحديث التقرير
-    function updateReport() {
-      const totals = ['drag', 'mcq', 'present', 'dual', 'dict'].map(key => state[key]);
-      const sumCorrect = totals.reduce((sum, activity) => sum + activity.correct, 0);
-      const sumTotal = totals.reduce((sum, activity) => sum + activity.total, 0);
-      const percentage = sumTotal ? Math.round((sumCorrect / sumTotal) * 100) : 0;
-
-      const reportBox = document.getElementById('reportBox');
-      reportBox.innerHTML = `
-        <div><b>الإجمالي:</b> ${sumCorrect} / ${sumTotal} (<b>${percentage}%</b>)</div>
-        <ul style="margin: 0.5rem 0; padding-inline-start: 1rem">
-          <li>التصنيف (سحب وإفلات): ${state.drag.correct}/${state.drag.total}</li>
-          <li>اختيار النهاية: ${state.mcq.correct}/${state.mcq.total}</li>
-          <li>اكتشاف الأصل بالمضارع: ${state.present.correct}/${state.present.total}</li>
-          <li>التثنية للأسماء: ${state.dual.correct}/${state.dual.total}</li>
-          <li>التصويب الإملائي: ${state.dict.correct}/${state.dict.total}</li>
-        </ul>
-        <div class="note">نصيحة: استخدم المضارع للأفعال، والتثنية للأسماء لكشف الأصل.</div>
-      `;
-    }
-
-    // خلط مصفوفة
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
-
-    // إنشاء عنصر
-    function createElement(tag, className, content) {
-      const el = document.createElement(tag);
-      el.className = className;
-      if (content) el.innerHTML = content;
-      return el;
-    }
-
-    /* ============ بيانات الدرس ============ */
-    // نشاط السحب: الكلمة ونوعها الصحيح
-    const dragData = [
-      { w: 'دعا', t: 'a' }, { w: 'سما', t: 'a' }, { w: 'عفا', t: 'a' }, { w: 'نما', t: 'a' }, { w: 'رجا', t: 'a' }, { w: 'علا', t: 'a' },
-      { w: 'سعى', t: 'ya' }, { w: 'قضى', t: 'ya' }, { w: 'رمى', t: 'ya' }, { w: 'بنى', t: 'ya' }, { w: 'هدى', t: 'ya' }, { w: 'فتى', t: 'ya' }
-    ];
-
-    // اختيار النهاية (فراغ + خيارات)
-    const mcqData = [
-      { stem: 'دع_', correct: 'ا', explain: 'يدعو ← أصلها واو → ا' },
-      { stem: 'سع_', correct: 'ى', explain: 'يسعى ← أصلها ياء → ى' },
-      { stem: 'عل_', correct: 'ا', explain: 'يعلو ← أصلها واو → ا' },
-      { stem: 'بن_', correct: 'ى', explain: 'يبني ← أصلها ياء → ى' },
-      { stem: 'عص_', correct: 'ا', explain: 'عصا → في التثنية عصوان (واو) → ا' },
-      { stem: 'فتح_', correct: 'ى', explain: 'فتى → في التثنية فتيان (ياء) → ى' }
-    ];
-
-    // اكتشاف الأصل بالمضارع
-    const presentData = [
-      { past: 'دعا', choices: ['يدعي', 'يدعو'], correct: 1, explain: 'انتهى المضارع بـ واو → ا' },
-      { past: 'سعى', choices: ['يسعى', 'يسعو'], correct: 0, explain: 'انتهى المضارع بـ ياء → ى' },
-      { past: 'عفا', choices: ['يعفو', 'يعفي'], correct: 0, explain: 'انتهى المضارع بـ واو → ا' },
-      { past: 'قضى', choices: ['يقضي', 'يقضو'], correct: 0, explain: 'انتهى المضارع بـ ياء → ى' },
-      { past: 'سما', choices: ['يسمو', 'يسمي'], correct: 0, explain: 'انتهى المضارع بـ واو → ا' }
-    ];
-
-    // التثنية للأسماء
-    const dualData = [
-      { noun: 'عصا', expect: 'عصوان', kind: 'a' },
-      { noun: 'فتى', expect: 'فتيان', kind: 'ya' },
-      { noun: 'هدى', expect: 'هديان', kind: 'ya' },
-      { noun: 'مصطفى', expect: 'مصطفيان', kind: 'ya' },
-      { noun: 'ليلى', expect: 'ليليان', kind: 'ya' }
-    ];
-
-    // تصويب إملائي
-    const dictData = [
-      { hint: '(فعل) مضارعه يعفو', expect: 'عفا' },
-      { hint: '(فعل) مضارعه يقضي', expect: 'قضى' },
-      { hint: '(اسم) مثنّاه فتيان', expect: 'فتى' },
-      { hint: '(فعل) مضارعه يبني', expect: 'بنى' },
-      { hint: '(اسم) مثنّاه عصوان', expect: 'عصا' },
-    ];
-
-    /* ============ نشاط السحب والإفلات ============ */
-    function setupDragAndDrop() {
-      const bank = document.getElementById('bank');
-      const dropA = document.getElementById('dropA');
-      const dropYa = document.getElementById('dropYa');
-      const dragScore = document.getElementById('dragScore');
-      const dragTotal = document.getElementById('dragTotal');
-
-      function renderDrag() {
-        bank.innerHTML = '';
-        dropA.innerHTML = '';
-        dropYa.innerHTML = '';
-        shuffle(dragData).forEach((data, index) => {
-          const chip = createElement('div', 'chip', data.w);
-          chip.draggable = true;
-          chip.dataset.t = data.t;
-          chip.id = `chip${index}`;
-          chip.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('text/plain', chip.id);
-          });
-          bank.appendChild(chip);
-        });
-
-        [dropA, dropYa, bank].forEach(zone => {
-          zone.addEventListener('dragover', (e) => e.preventDefault());
-          zone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const id = e.dataTransfer.getData('text/plain');
-            const chip = document.getElementById(id);
-            if (chip) zone.appendChild(chip);
-          });
-        });
-
-        state.drag.total = dragData.length;
-        state.drag.correct = 0;
-        dragTotal.textContent = state.drag.total;
-        dragScore.textContent = '0';
-        state.drag.done = false;
-        updateReport();
-      }
-
-      document.getElementById('checkDrag').addEventListener('click', () => {
-        let correct = 0;
-        [...dropA.children].forEach(chip => {
-          chip.classList.add(chip.dataset.t === 'a' ? 'ok' : 'bad');
-          if (chip.dataset.t === 'a') correct++;
-        });
-        [...dropYa.children].forEach(chip => {
-          chip.classList.add(chip.dataset.t === 'ya' ? 'ok' : 'bad');
-          if (chip.dataset.t === 'ya') correct++;
-        });
-
-        state.drag.correct = correct;
-        dragScore.textContent = correct;
-        state.drag.done = true;
-        updateReport();
-
-        setTimeout(() => {
-          document.querySelectorAll('.chip').forEach(chip => {
-            chip.classList.remove('ok', 'bad');
-          });
-        }, 1200);
-      });
-
-      document.getElementById('resetDrag').addEventListener('click', renderDrag);
-      renderDrag();
-    }
-
-    /* ============ اختيار من متعدد ============ */
-    function setupMultipleChoice() {
-      const mcqWrap = document.getElementById('mcqWrap');
-      const mcqScore = document.getElementById('mcqScore');
-      const mcqTotal = document.getElementById('mcqTotal');
-
-      function renderMcq() {
-        mcqWrap.innerHTML = '';
-        shuffle(mcqData).forEach((question, index) => {
-          const box = createElement('div', 'q', `
-            <h4>${question.stem}</h4>
-            <div class="choices">
-              <label><input type="radio" name="mcq${index}" value="ا"> ا </label>
-              <label><input type="radio" name="mcq${index}" value="ى"> ى </label>
+<body>
+    <header>
+        <h1>درس تفاعلي: الألف في آخر الأسماء والأفعال</h1>
+        <p>إعداد: الأستاذ خليل البلوشي</p>
+    </header>
+    <nav>
+        <a href="https://www.learnarabiconline.com/">تعلم العربية أونلاين</a>
+        <a href="https://www.alefbata.com/lessons">دروس الحروف</a>
+        <div class="dropdown">
+            <a href="#">موارد إضافية</a>
+            <div class="dropdown-content">
+                <a href="https://www.madinaharabic.com/">موقع المدينة</a>
+                <a href="https://www.languageguide.org/arabic/">دليل اللغة العربية</a>
+                <a href="https://www.lingohut.com/en/l69/learn-arabic">لينغوهات</a>
             </div>
-            <div class="note" id="mcqExp${index}" style="display:none">${question.explain}</div>
-          `);
-          mcqWrap.appendChild(box);
-        });
+        </div>
+        <a href="#">الصفحة الرئيسية</a>
+    </nav>
+    <div class="container">
+        <h2>1. مقدمة الدرس</h2>
+        <p>الهدف العام: تعلم قواعد كتابة الألف في آخر الأسماء والأفعال، والتفرقة بين الألف المقصورة والألف الممدودة، مع توظيف أمثلة وتطبيقات تفاعلية.</p>
 
-        state.mcq.total = mcqData.length;
-        state.mcq.correct = 0;
-        mcqTotal.textContent = state.mcq.total;
-        mcqScore.textContent = '0';
-        state.mcq.done = false;
-        updateReport();
-      }
+        <h2>2. شرح القواعد</h2>
 
-      document.getElementById('checkMcq').addEventListener('click', () => {
-        let correct = 0;
-        [...mcqWrap.querySelectorAll('.q')].forEach((box, i) => {
-          const chosen = box.querySelector('input[type="radio"]:checked');
-          const correctAnswer = mcqData[[...mcqWrap.children].indexOf(box)].correct;
-          const explanation = box.querySelector('.note');
-          explanation.style.display = 'block';
-          if (chosen && chosen.value === correctAnswer) {
-            correct++;
-            box.style.borderColor = 'var(--accent)';
-          } else {
-            box.style.borderColor = 'var(--danger)';
-          }
-        });
+        <h3>2.1. الألف المقصورة</h3>
+        <div class="example-box">
+            <p><strong>تعريف:</strong> ألف تكتب بدون همزة، وتكتب على شكل "ى".</p>
+            <p><strong>مواضع كتابتها:</strong></p>
+            <ul>
+                <li>في الأسماء الثلاثية المنقلبة عن ياء، مثل: "فتى" (أصلها: فتي).</li>
+                <li>في الأفعال الثلاثية المنقلبة عن ياء، مثل: "رمى" (أصلها: رمي).</li>
+                <li>في الأفعال غير الثلاثية إذا لم تسبق بياء، مثل: "استغنى" (أصلها: استغني).</li>
+            </ul>
+        </div>
 
-        state.mcq.correct = correct;
-        mcqScore.textContent = correct;
-        state.mcq.done = true;
-        updateReport();
-      });
+        <h3>2.2. الألف الممدودة</h3>
+        <div class="example-box">
+            <p><strong>تعريف:</strong> ألف تكتب على شكل "ا".</p>
+            <p><strong>مواضع كتابتها:</strong></p>
+            <ul>
+                <li>في الأسماء الثلاثية المنقلبة عن واو، مثل: "عصا" (أصلها: عصو).</li>
+                <li>في الأفعال الثلاثية المنقلبة عن واو، مثل: "دعا" (أصلها: دعو).</li>
+                <li>في الأفعال غير الثلاثية إذا سبقت بياء، مثل: "استغوى" (أصلها: استغوي).</li>
+            </ul>
+        </div>
 
-      document.getElementById('resetMcq').addEventListener('click', renderMcq);
-      renderMcq();
-    }
+        <h2>3. أمثلة وتطبيقات تفاعلية</h2>
 
-    /* ============ اكتشاف الأصل بالمضارع ============ */
-    function setupPresentTense() {
-      const presentWrap = document.getElementById('presentWrap');
-      const presentScore = document.getElementById('presentScore');
-      const presentTotal = document.getElementById('presentTotal');
+        <h3>3.1. أمثلة توضيحية</h3>
+        <table>
+            <tr>
+                <th>الكلمة</th>
+                <th>نوع الألف</th>
+                <th>السبب</th>
+            </tr>
+            <tr>
+                <td>فتى</td>
+                <td>مقصورة</td>
+                <td>اسم ثلاثي منقلب عن ياء</td>
+            </tr>
+            <tr>
+                <td>رمى</td>
+                <td>مقصورة</td>
+                <td>فعل ثلاثي منقلب عن ياء</td>
+            </tr>
+            <tr>
+                <td>عصا</td>
+                <td>ممدودة</td>
+                <td>اسم ثلاثي منقلب عن واو</td>
+            </tr>
+            <tr>
+                <td>دعا</td>
+                <td>ممدودة</td>
+                <td>فعل ثلاثي منقلب عن واو</td>
+            </tr>
+            <tr>
+                <td>استغنى</td>
+                <td>مقصورة</td>
+                <td>فعل غير ثلاثي لم يسبق بياء</td>
+            </tr>
+            <tr>
+                <td>استغوى</td>
+                <td>ممدودة</td>
+                <td>فعل غير ثلاثي سبقت بياء</td>
+            </tr>
+        </table>
 
-      function renderPresent() {
-        presentWrap.innerHTML = '';
-        shuffle(presentData).forEach((question, index) => {
-          const options = question.choices.map((choice, i) => `
-            <label><input type="radio" name="pr${index}" value="${i}"> ${choice}</label>
-          `).join('');
-          const box = createElement('div', 'q', `
-            <h4>الماضي: <b>${question.past}</b></h4>
-            <div class="choices">${options}</div>
-            <div class="note" style="display:none">${question.explain}</div>
-          `);
-          presentWrap.appendChild(box);
-        });
+        <h3>3.2. تمارين تفاعلية</h3>
 
-        state.present.total = presentData.length;
-        state.present.correct = 0;
-        presentTotal.textContent = state.present.total;
-        presentScore.textContent = '0';
-        state.present.done = false;
-        updateReport();
-      }
+        <div class="exercise">
+            <h4>تمرين 1: اختر نوع الألف في الكلمات التالية</h4>
+            <ul>
+                <li>هوى: <button onclick="checkAnswer('مقصورة')">مقصورة</button></li>
+                <li>علا: <button onclick="checkAnswer('ممدودة')">ممدودة</button></li>
+                <li>سما: <button onclick="checkAnswer('ممدودة')">ممدودة</button></li>
+                <li>بنى: <button onclick="checkAnswer('مقصورة')">مقصورة</button></li>
+            </ul>
+        </div>
 
-      document.getElementById('checkPresent').addEventListener('click', () => {
-        let correct = 0;
-        [...presentWrap.querySelectorAll('.q')].forEach((box) => {
-          const chosen = box.querySelector('input[type="radio"]:checked');
-          const questionIndex = [...presentWrap.children].indexOf(box);
-          const correctAnswer = presentData[questionIndex].correct.toString();
-          const explanation = box.querySelector('.note');
-          explanation.style.display = 'block';
-          if (chosen && chosen.value === correctAnswer) {
-            correct++;
-            box.style.borderColor = 'var(--accent)';
-          } else {
-            box.style.borderColor = 'var(--danger)';
-          }
-        });
+        <div class="exercise">
+            <h4>تمرين 2: صحح الخطأ في الكلمات التالية</h4>
+            <ul>
+                <li>"قضى" (صحيح)</li>
+                <li>"استغنى" (صحيح)</li>
+                <li>"استغوى" (صحيح)</li>
+            </ul>
+        </div>
 
-        state.present.correct = correct;
-        presentScore.textContent = correct;
-        state.present.done = true;
-        updateReport();
-      });
+        <h2>4. أنشطة تفاعلية</h2>
 
-      document.getElementById('resetPresent').addEventListener('click', renderPresent);
-      renderPresent();
-    }
+        <h3>4.1. لعبة "صواب أو خطأ"</h3>
+        <div class="exercise">
+            <p>عرض مجموعة من الكلمات على الشاشة، ويطلب من الطالب تحديد نوع الألف (مقصورة/ممدودة) باستخدام زرين: "صواب" و"خطأ".</p>
+            <p>مثال: "هوى" → مقصورة (صواب).</p>
+        </div>
 
-    /* ============ التثنية للأسماء ============ */
-    function setupDualForm() {
-      const dualWrap = document.getElementById('dualWrap');
-      const dualScore = document.getElementById('dualScore');
-      const dualTotal = document.getElementById('dualTotal');
+        <h3>4.2. لعبة "اكتب الكلمة الصحيحة"</h3>
+        <div class="exercise">
+            <p>عرض جملة تحتوي على كلمة مكتوبة خطأ، ويطلب من الطالب كتابة الكلمة الصحيحة.</p>
+            <p>مثال: "استغوى" (خطأ) → "استغنى" (صحيح).</p>
+        </div>
 
-      function renderDual() {
-        dualWrap.innerHTML = '';
-        shuffle(dualData).forEach((question) => {
-          const box = createElement('div', 'q', `
-            <h4>ثنِّ الاسم: <b>${question.noun}</b></h4>
-            <input class="input" type="text" placeholder="اكتب التثنية هنا" aria-label="إجابة التثنية">
-            <div class="note" style="display:none">الإجابة النموذجية: ${question.expect}</div>
-          `);
-          dualWrap.appendChild(box);
-        });
+        <h2>5. تقويم الدرس</h2>
+        <div class="exercise">
+            <p>اختبار قصير: مجموعة من الأسئلة الاختيارية حول قواعد الألف المقصورة والممدودة.</p>
+            <p>تطبيق عملي: كتابة فقرة قصيرة تحتوي على كلمات تتضمن الألف المقصورة والممدودة.</p>
+        </div>
 
-        state.dual.total = dualData.length;
-        state.dual.correct = 0;
-        dualTotal.textContent = state.dual.total;
-        dualScore.textContent = '0';
-        state.dual.done = false;
-        updateReport();
-      }
+        <h2>6. معلومات إضافية من كتاب الطالب</h2>
+        <div class="example-box">
+            <p>في عام 526، وفي أوج تشتّت الإمبراطورية الرومانية، طوى الظلام أوروبا والصين والشرق الأوسط بسبب انفجار بركاني ألقى كمًا هائلًا من الرماد. دنا فيه الدخان إلى سطح الأرض، فغطى الضباب الشمس مدة تزيد على العام، وتفشى المرض والجوع، فاستعيا الناس وقضى كثير منهم نحبهم، فكانت سنة من أشد السنوات على البشرية.</p>
+            <p>الألف في الفعلين (طوى، قضى) جاءتا مقصورتين، بينما جاء الألف في الفعل (دنا) ممدودة.</p>
+        </div>
 
-      document.getElementById('checkDual').addEventListener('click', () => {
-        let correct = 0;
-        [...dualWrap.querySelectorAll('.q')].forEach((box) => {
-          const input = box.querySelector('input');
-          const questionIndex = [...dualWrap.children].indexOf(box);
-          const expectedAnswer = dualData[questionIndex].expect;
-          const explanation = box.querySelector('.note');
-          explanation.style.display = 'block';
-          if (input.value.trim() === expectedAnswer) {
-            correct++;
-            box.style.borderColor = 'var(--accent)';
-          } else {
-            box.style.borderColor = 'var(--danger)';
-          }
-        });
+        <h2>7. تمارين إضافية</h2>
+        <div class="exercise">
+            <p>املأ الجدول الآتي كما في المثال:</p>
+            <table>
+                <tr>
+                    <th>الكلمة</th>
+                    <th>أصل الألف</th>
+                </tr>
+                <tr>
+                    <td>رجا</td>
+                    <td>رجو</td>
+                </tr>
+                <tr>
+                    <td>بنى</td>
+                    <td>بني</td>
+                </tr>
+                <tr>
+                    <td>سما</td>
+                    <td>سمو</td>
+                </tr>
+                <tr>
+                    <td>عفا</td>
+                    <td>عفو</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 | الأستاذ خليل البلوشي</p>
+    </footer>
 
-        state.dual.correct = correct;
-        dualScore.textContent = correct;
-        state.dual.done = true;
-        updateReport();
-      });
-
-      document.getElementById('resetDual').addEventListener('click', renderDual);
-      renderDual();
-    }
-
-    /* ============ التصويب الإملائي ============ */
-    function setupDictation() {
-      const dictWrap = document.getElementById('dictWrap');
-      const dictScore = document.getElementById('dictScore');
-      const dictTotal = document.getElementById('dictTotal');
-
-      function normalizeArabic(str) {
-        return str.replace(/\s+/g, '').replace(/ي/g, 'ي').replace(/ى/g, 'ى').replace(/ا/g, 'ا');
-      }
-
-      function renderDict() {
-        dictWrap.innerHTML = '';
-        shuffle(dictData).forEach((question) => {
-          const box = createElement('div', 'q', `
-            <h4>${question.hint}</h4>
-            <input class="input" type="text" placeholder="اكتب الكلمة الصحيحة (ا/ى)">
-            <div class="note" style="display:none">الإجابة: ${question.expect}</div>
-          `);
-          dictWrap.appendChild(box);
-        });
-
-        state.dict.total = dictData.length;
-        state.dict.correct = 0;
-        dictTotal.textContent = state.dict.total;
-        dictScore.textContent = '0';
-        state.dict.done = false;
-        updateReport();
-      }
-
-      document.getElementById('checkDict').addEventListener('click', () => {
-        let correct = 0;
-        [...dictWrap.querySelectorAll('.q')].forEach((box) => {
-          const input = box.querySelector('input');
-          const questionIndex = [...dictWrap.children].indexOf(box);
-          const expectedAnswer = dictData[questionIndex].expect;
-          const explanation = box.querySelector('.note');
-          explanation.style.display = 'block';
-          if (normalizeArabic(input.value) === normalizeArabic(expectedAnswer)) {
-            correct++;
-            box.style.borderColor = 'var(--accent)';
-          } else {
-            box.style.borderColor = 'var(--danger)';
-          }
-        });
-
-        state.dict.correct = correct;
-        dictScore.textContent = correct;
-        state.dict.done = true;
-        updateReport();
-      });
-
-      document.getElementById('resetDict').addEventListener('click', renderDict);
-      renderDict();
-    }
-
-    // تنشيط جميع الأنشطة
-    setupDragAndDrop();
-    setupMultipleChoice();
-    setupPresentTense();
-    setupDualForm();
-    setupDictation();
-
-    // إعادة ضبط الكل
-    document.getElementById('resetAll').addEventListener('click', () => {
-      setupDragAndDrop();
-      setupMultipleChoice();
-      setupPresentTense();
-      setupDualForm();
-      setupDictation();
-    });
-
-    // أول تقرير
-    updateReport();
-  </script>
+    <script>
+        function checkAnswer(answer) {
+            alert("الإجابة الصحيحة: " + answer);
+        }
+    </script>
 </body>
 </html>
